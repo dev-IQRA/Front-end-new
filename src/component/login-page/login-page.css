@@ -1,0 +1,188 @@
+/* Base styles and reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+
+/* Main container with gradient background */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e65c00 0%, #8a2100 100%);
+  padding: 20px;
+}
+
+/* Login card */
+.login-card {
+  display: flex;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Left section with image */
+.login-image-section {
+  flex: 1;
+  background-image: url("/placeholder.svg?height=600&width=400");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay to ensure text visibility */
+}
+
+/* Logo styling */
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Welcome text styling */
+.welcome-text {
+  margin-bottom: 40px;
+}
+
+.welcome-text h2 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.welcome-text h3 {
+  font-size: 1.5rem;
+}
+
+/* Right section with form */
+.login-form-section {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Login title */
+.login-title {
+  color: #b92b06;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #b92b06;
+}
+
+/* Remember me checkbox styling */
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.remember-me label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.remember-me input {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  accent-color: #b92b06;
+}
+
+/* Forgot password link */
+.forgot-password {
+  text-align: right;
+  margin-bottom: 25px;
+}
+
+.forgot-password a {
+  color: #b92b06;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Login button */
+.login-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #b92b06;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #8a2100;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+    max-width: 400px;
+  }
+
+  .login-image-section {
+    padding: 20px;
+    min-height: 200px;
+  }
+
+  .login-form-section {
+    padding: 30px 20px;
+  }
+
+  .welcome-text {
+    margin-bottom: 20px;
+  }
+
+  .welcome-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .welcome-text h3 {
+    font-size: 1.2rem;
+  }
+}
