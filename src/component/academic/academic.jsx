@@ -2,16 +2,17 @@
 
 import React from "react";
 import "./academic.css";
+// import Sidebar from '../sidebar/sidebar.jsx';
 
-const Sidebar = () => (
-  <aside className="sidebar">
-    <div className="brand">IQRA<span>Student</span></div>
-    <nav className="menu">
-      <button className="menu-item">Dashboard</button>
-      <button className="menu-item active">Academic</button>
-    </nav>
-  </aside>
-);
+// const Sidebar = () => (
+//   <aside className="sidebar">
+//     <div className="brand">IQRA<span>Student</span></div>
+//     <nav className="menu">
+//       <button className="menu-item">Dashboard</button>
+//       <button className="menu-item active">Academic</button>
+//     </nav>
+//   </aside>
+// );
 
 const Schedule = () => (
   <div className="schedule">
