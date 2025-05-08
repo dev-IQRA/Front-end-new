@@ -1,23 +1,22 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useNavigate } from "react-router-dom" 
-import "./login-page.css"
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./login-page.css";
 
 const LoginPage = () => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [rememberMe, setRememberMe] = useState(false)
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
-  const navigate = useNavigate() 
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Login attempt with:", { username, password, rememberMe })
+    e.preventDefault();
+    console.log("Login attempt with:", { username, password, rememberMe });
 
-    navigate("/dashboard")
-  }
+    navigate("/dashboard");
+  };
 
   return (
     <div className="login-container">
@@ -52,9 +51,10 @@ const LoginPage = () => {
             </div>
             <div className="remember-me">
               <label>
-                <input type="checkbox" 
-                checked={rememberMe} 
-                onChange={(e) => setRememberMe(e.target.checked)} 
+                <input
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
                 />
                 <span>Remember me</span>
               </label>
@@ -69,7 +69,7 @@ const LoginPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
