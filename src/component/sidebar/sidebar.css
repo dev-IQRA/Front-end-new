@@ -44,3 +44,9 @@
   color: #3a1a00;
   font-weight: 700;
 }
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 5px; /* Add some space above the submenu */
+}
