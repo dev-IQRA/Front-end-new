@@ -5,6 +5,13 @@ import Dashboard from "./component/dashboard/dashboard";
 import Jadwal from "./component/academic/jadwal/jadwal";
 import Nilai from "./component/academic/nilai/nilai";
 import Kehadiran from "./component/academic/kehadiran/kehadiran";
+/**
+ * Defines the main application component with client-side routing for authentication and academic pages.
+ *
+ * Sets up routes for login, dashboard, and academic sections including schedule, grades, and attendance.
+ *
+ * @returns {JSX.Element} The application's routing structure.
+ */
 function App() {
   return (
     <Router>
