@@ -1,8 +1,6 @@
-
-
 import React from "react";
 import "./academic.css";
-import Sidebar from '../sidebar/sidebar.jsx';
+import Sidebar from "../sidebar/sidebar.jsx";
 // import Sidebar from '../sidebar/sidebar.jsx';
 
 // const Sidebar = () => (
@@ -20,12 +18,32 @@ const Schedule = () => (
     <h2>Jadwal</h2>
     <table>
       <thead>
-        <tr><th>Hari/Tanggal</th><th>Mata Pelajaran</th><th>Ruangan</th><th>Waktu</th></tr>
+        <tr>
+          <th>Hari/Tanggal</th>
+          <th>Mata Pelajaran</th>
+          <th>Ruangan</th>
+          <th>Waktu</th>
+        </tr>
       </thead>
       <tbody>
-        <tr><td>Senin, 12 Maret 2025</td><td>Matematika</td><td>MPA X.1</td><td>07:00 - 08:30</td></tr>
-        <tr><td></td><td className="highlight">Bahasa Indonesia</td><td>MPA X.1</td><td>08:30 - 10:00</td></tr>
-        <tr><td></td><td>Fisika</td><td>MPA X.1</td><td>10:00 - 11:30</td></tr>
+        <tr>
+          <td>Senin, 12 Maret 2025</td>
+          <td>Matematika</td>
+          <td>MPA X.1</td>
+          <td>07:00 - 08:30</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td className="highlight">Bahasa Indonesia</td>
+          <td>MPA X.1</td>
+          <td>08:30 - 10:00</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Fisika</td>
+          <td>MPA X.1</td>
+          <td>10:00 - 11:30</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -41,11 +59,15 @@ const Calendar = () => (
       <div className="month">Maret 2025</div>
     </div>
     <div className="days">
-      {["S", "S", "R", "K", "J", "S", "M"].map((d, i) => <div key={i}>{d}</div>)}
+      {["S", "S", "R", "K", "J", "S", "M"].map((d, i) => (
+        <div key={i}>{d}</div>
+      ))}
     </div>
     <div className="dates">
       {Array.from({ length: 31 }, (_, i) => (
-        <div key={i} className={i === 20 ? "active-date" : ""}>{i + 1}</div>
+        <div key={i} className={i === 20 ? "active-date" : ""}>
+          {i + 1}
+        </div>
       ))}
     </div>
   </div>
@@ -79,9 +101,21 @@ const Academic = () => (
         <Calendar />
       </div>
       <div className="summary-section">
-        <SummaryCard title="100%" subtitle="Genap 2024/2025" value="Rata-rata kehadiran" />
-        <SummaryCard title="93.2" subtitle="Pengetahuan - Genap 2024/2025" value="Rata-rata nilai" />
-        <SummaryCard title="93.2" subtitle="Keterampilan - Genap 2024/2025" value="Rata-rata nilai" />
+        <SummaryCard
+          title="100%"
+          subtitle="Genap 2024/2025"
+          value="Rata-rata kehadiran"
+        />
+        <SummaryCard
+          title="93.2"
+          subtitle="Pengetahuan - Genap 2024/2025"
+          value="Rata-rata nilai"
+        />
+        <SummaryCard
+          title="93.2"
+          subtitle="Keterampilan - Genap 2024/2025"
+          value="Rata-rata nilai"
+        />
       </div>
       <div className="course-review">
         <div className="header">

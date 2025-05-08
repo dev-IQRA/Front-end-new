@@ -1,9 +1,8 @@
-
 // dashboard.jsx
 
-import React from 'react';
-import './dashboard.css';
-import Sidebar from '../sidebar/sidebar.jsx';
+import React from "react";
+import "./dashboard.css";
+import Sidebar from "../sidebar/sidebar.jsx";
 
 // const Sidebar = () => (
 //   <aside className="sidebar">
@@ -18,7 +17,10 @@ import Sidebar from '../sidebar/sidebar.jsx';
 const Announcement = () => (
   <div className="announcement">
     <h2>Pengumuman</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat magna quis eros consequat porttitor...</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat
+      magna quis eros consequat porttitor...
+    </p>
   </div>
 );
 
@@ -30,13 +32,17 @@ const Calendar = () => (
     </div>
     <div className="month-label">Maret 2025</div>
     <div className="calendar-days">
-      <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      <span>Sun</span>
+      <span>Mon</span>
+      <span>Tue</span>
+      <span>Wed</span>
+      <span>Thu</span>
+      <span>Fri</span>
+      <span>Sat</span>
     </div>
     <div className="calendar-dates">
       {Array.from({ length: 31 }, (_, i) => (
-        <span
-          key={i}
-          className={i === 20 ? 'active-date' : ''}>
+        <span key={i} className={i === 20 ? "active-date" : ""}>
           {i + 1}
         </span>
       ))}
@@ -47,7 +53,11 @@ const Calendar = () => (
 const Attendance = () => (
   <div className="card attendance">
     <h3>Kehadiran</h3>
-    <div>Semester<br /><strong>Genap 2024/2025</strong></div>
+    <div>
+      Semester
+      <br />
+      <strong>Genap 2024/2025</strong>
+    </div>
     <div className="value">100%</div>
     <div>Rata-rata kehadiran</div>
   </div>

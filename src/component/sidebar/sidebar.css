@@ -1,47 +1,46 @@
 .sidebar {
-    width: 200px;
-    height: 100vh;
-    background-color: #a64b3a; /* Warna merah kecoklatan sesuai foto */
-    color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  .brand {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 40px;
-  }
-  
-  .brand span {
-    font-weight: normal;
-  }
-  
-  .menu {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .menu-item {
-    padding: 12px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .menu-item:hover {
-    background-color: #8a3b2e;
-  }
-  
-  .menu-item.active {
-    background-color: #f0a500; /* Warna kuning keemasan untuk menu aktif */
-    color: #3a1a00;
-    font-weight: 700;
-  }
-  
+  width: 200px;
+  height: 100vh;
+  background-color: #a64b3a; /* Warna merah kecoklatan sesuai foto */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.brand span {
+  font-weight: normal;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-item {
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: #8a3b2e;
+}
+
+.menu-item.active {
+  background-color: #f0a500; /* Warna kuning keemasan untuk menu aktif */
+  color: #3a1a00;
+  font-weight: 700;
+}
