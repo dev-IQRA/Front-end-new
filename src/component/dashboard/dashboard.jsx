@@ -2,31 +2,17 @@
 
 import React from "react";
 import "./dashboard.css";
-import { NavLink } from "react-router-dom";
-import Slider from "react-slick";
+import Sidebar from "../sidebar/sidebar.jsx";
 
-const Sidebar = () => (
-  <aside className="sidebar">
-    <div className="brand">
-      IQRA<span>Student</span>
-    </div>
-    <nav className="menu">
-      <button className="menu-item active">Dashboard</button>
-      <div className="menu-item submenu-header">Academic</div>
-      <div className="submenu">
-        <NavLink to="/academic/jadwal" className="menu-item">
-          Jadwal
-        </NavLink>
-        <NavLink to="/academic/nilai" className="menu-item">
-          Nilai
-        </NavLink>
-        <NavLink to="/academic/kehadiran" className="menu-item">
-          Kehadiran
-        </NavLink>
-      </div>
-    </nav>
-  </aside>
-);
+// const Sidebar = () => (
+//   <aside className="sidebar">
+//     <div className="brand">IQRA<span>Student</span></div>
+//     <nav className="menu">
+//       <button className="menu-item active">Dashboard</button>
+//       <button className="menu-item">Academic</button>
+//     </nav>
+//   </aside>
+// );
 
 const Announcement = () => (
   <div className="announcement">
@@ -35,61 +21,6 @@ const Announcement = () => (
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat
       magna quis eros consequat porttitor...
     </p>
-  </div>
-);
-
-const Schedule = () => (
-  <div className="bg-white rounded-3xl p-6 mb-8 shadow-sm">
-    <h2 className="text-2xl font-semibold mb-4" style={{ color: "#28536b" }}>
-      Jadwal
-    </h2>
-
-    <div className="grid grid-cols-4 gap-4 mb-4 font-medium text-center">
-      <div>Hari/Tanggal</div>
-      <div>Mata Pelajaran</div>
-      <div>Ruang Kelas</div>
-      <div>Waktu</div>
-    </div>
-
-    {/* Schedule Items */}
-    <div className="divide-y divide-gray-200">
-      {" "}
-      {/* Adds a divider line */}
-      {[
-        {
-          date: "Senin, 12 Maret 2025",
-          subjects: [
-            { name: "Matematika", code: "MAT120D", time: "07:00-08:30" },
-            { name: "Bahasa Indonesia", code: "IND120D", time: "08:30-10:00" },
-            { name: "Fisika", code: "FIS120D", time: "10:30-12:00" },
-          ],
-        },
-        {
-          date: "Selasa, 13 Maret 2025",
-          subjects: [
-            { name: "Kimia", code: "KIM120D", time: "07:00-08:30" },
-            { name: "Biologi", code: "BIO120D", time: "08:30-10:00" },
-          ],
-        },
-      ].map((day) => (
-        <div key={day.date} className="py-4">
-          <div className="font-medium">{day.date}</div>
-          {day.subjects.map((subject) => (
-            <div className="grid grid-cols-4 gap-4 mb-4" key={subject.code}>
-              <div></div>
-              <div>
-                <div className="text-lg" style={{ color: "#a72608" }}>
-                  {subject.name}
-                </div>
-                <div className="text-xs text-gray-500">{subject.code}</div>
-              </div>
-              <div className="text-center">MIPA X.1</div>
-              <div className="text-center">{subject.time}</div>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
   </div>
 );
 
@@ -178,27 +109,7 @@ const CourseReview = () => (
     </div>
   </div>
 );
-const Carousel = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-  };
-  return (
-    <Slider {...settings}>
-      <div>
-        <Schedule />
-      </div>
-      <div>
-        <Announcement />
-      </div>
-      {/* Tambahkan komponen lain jika diperlukan */}
-    </Slider>
-  );
-};
+
 const Dashboard = () => {
   return (
     <div className="dashboard">
