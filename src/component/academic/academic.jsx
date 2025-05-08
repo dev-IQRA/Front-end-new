@@ -1,7 +1,9 @@
 import React from "react";
 import "./academic.css";
+
 import Sidebar from "../sidebar/sidebar.jsx";
 // import Sidebar from '../sidebar/sidebar.jsx';
+
 
 // const Sidebar = () => (
 //   <aside className="sidebar">
