@@ -1,10 +1,14 @@
-// nilai.jsx
 import React from "react";
+import "./kehadiran.css";
+import Sidebar from "../../sidebar/sidebar.jsx"
+
 const Kehadiran = () => {
   return (
-    <div>
-      <h1>Kehadiran</h1>
-      {/* Konten lainnya */}
+    <div className="Kehadiran-container">
+      <div className="kehadiran-content">
+        {/* Add attendance tracking interface here */}
+        <p>Attendance information will be displayed here</p>
+      </div>
     </div>
   );
 };

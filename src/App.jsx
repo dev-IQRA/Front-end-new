@@ -5,6 +5,7 @@ import Dashboard from "./component/dashboard/dashboard";
 import Jadwal from "./component/academic/jadwal/jadwal";
 import Nilai from "./component/academic/nilai/nilai";
 import Kehadiran from "./component/academic/kehadiran/kehadiran";
+
 function App() {
   return (
     <Router>
