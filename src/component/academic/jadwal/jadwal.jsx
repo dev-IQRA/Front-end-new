@@ -7,17 +7,14 @@ const Schedule = () => (
     <h2 className="text-2xl font-semibold mb-4" style={{ color: "#28536b" }}>
       Jadwal
     </h2>
-
     <div className="grid grid-cols-4 gap-4 mb-4 font-medium text-center">
       <div>Hari/Tanggal</div>
       <div>Mata Pelajaran</div>
       <div>Ruang Kelas</div>
       <div>Waktu</div>
     </div>
-
     {/* Schedule Items */}
     <div className="divide-y divide-gray-200">
-      {" "}
       {/* Adds a divider line */}
       {[
         {
