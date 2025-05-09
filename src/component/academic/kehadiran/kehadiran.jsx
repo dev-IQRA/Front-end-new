@@ -1,5 +1,6 @@
 import React from "react";
 import "./kehadiran.css";
+import Sidebar from "../../sidebar/sidebar.jsx"
 
 const Kehadiran = () => {
   return (
