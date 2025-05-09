@@ -1,10 +1,16 @@
-import React, { useState } from "react"; // Import useState
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react"; // Import useState
+import { NavLink, useLocation } from "react-router-dom";
 import "./sidebar.css";
 
 const Sidebar = () => {
-  // State to manage the visibility of the submenu
+   const location = useLocation();
   const [isSubmenuOpen, setSubmenuOpen] = useState(false);
+
+useEffect(() => {
+    if (location.pathname.startsWith("/academic")) {
+      setSubmenuOpen(true);
+    }
+  }, [location]);
 
   // Function to toggle the submenu
   const toggleSubmenu = () => {
@@ -12,7 +18,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar" role="navigation" aria-label="Sidebar Navigation">
       <div className="brand">
         IQRA<span>Student</span>
       </div>
@@ -25,21 +31,25 @@ const Sidebar = () => {
         >
           Dashboard
         </NavLink>
-        <div className="menu-item" onClick={toggleSubmenu}>
+        <div 
+          className={`menu-item ${isSubmenuOpen ? "active" : ""}`}
+          onClick={toggleSubmenu}
+        >
           Academic
         </div>
       </nav>
 
-      {/* Submenu */}
       {isSubmenuOpen && (
         <div className="submenu">
-          <NavLink to="/academic/jadwal" className="menu-item">
+          <NavLink to="/academic/jadwal" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}
+          >
             Jadwal
+
           </NavLink>
-          <NavLink to="/academic/nilai" className="menu-item">
+          <NavLink to="/academic/nilai" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
             Nilai
           </NavLink>
-          <NavLink to="/academic/kehadiran" className="menu-item">
+          <NavLink to="/academic/kehadiran" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
             Kehadiran
           </NavLink>
         </div>
