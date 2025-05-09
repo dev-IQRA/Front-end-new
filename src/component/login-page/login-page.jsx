@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./login-page.css";
 
 const LoginPage = () => {
@@ -11,11 +12,26 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login attempt with:", { username, password, rememberMe });
+    try {
+      const response = await axios.post(
+        "http://localhost:3333/api/auth/login",
+        {
+          username,
+          password
+        },
+        {
+          withCredentials: true // penting agar cookie tersimpan
+        }
+      );
 
-    navigate("/dashboard");
+      alert(response.data.message || "Login berhasil");
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(error);
+      alert(error.response?.data?.message || "Login gagal");
+    }
   };
 
   return (
