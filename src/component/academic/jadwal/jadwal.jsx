@@ -1,20 +1,45 @@
 import React from "react";
 import "./jadwal.css";
 import Sidebar from "../../sidebar/sidebar.jsx";
+// const Sidebar = () => (
+//   <aside className="sidebar">
+//     <div className="brand">
+//       IQRA<span>Student</span>
+//     </div>
+//     <nav className="menu">
+//       <button className="menu-item active">Dashboard</button>
+//       <div className="menu-item submenu-header">Academic</div>
+//       <div className="submenu">
+//         <NavLink to="/academic/jadwal" className="menu-item">
+//           Jadwal
+//         </NavLink>
+//         <NavLink to="/academic/nilai" className="menu-item">
+//           Nilai
+//         </NavLink>
+//         <NavLink to="/academic/kehadiran" className="menu-item">
+//           Kehadiran
+//         </NavLink>
+//       </div>
+//     </nav>
+//   </aside>
+// );
 
 const Schedule = () => (
   <div className="bg-white rounded-3xl p-6 mb-8 shadow-sm">
     <h2 className="text-2xl font-semibold mb-4" style={{ color: "#28536b" }}>
       Jadwal
     </h2>
+
     <div className="grid grid-cols-4 gap-4 mb-4 font-medium text-center">
       <div>Hari/Tanggal</div>
       <div>Mata Pelajaran</div>
       <div>Ruang Kelas</div>
       <div>Waktu</div>
     </div>
+
     {/* Schedule Items */}
     <div className="divide-y divide-gray-200">
+      {" "}
       {/* Adds a divider line */}
       {[
         {
