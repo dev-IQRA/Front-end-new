@@ -60,15 +60,14 @@
 }
 
 .schedule-table-container {
-  max-height: 350px;
-
+  max-height: 300px;
+  overflow-y: auto;
   max-width: 100%;
 }
 
 .schedule-table {
   width: 100%;
-  min-width: 100px;
-
+  min-width: fit-content;
 }
 
 .schedule-table th,
@@ -91,6 +90,12 @@
   gap: 3rem; /* Diperbesar dari 2rem */
   flex: 1;
   align-items: flex-start;
+}
+.schedule-table thead {
+  position: sticky;
+  top: 0;
+  background: var(--card-bg);
+  z-index: 1;
 }
 /* === Info Cards === */
 .info-section {
