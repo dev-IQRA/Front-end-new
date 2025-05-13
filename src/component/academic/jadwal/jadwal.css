@@ -43,112 +43,54 @@
 
 /* Schedule Styles */
 .schedule-section {
-  flex: 1 1 auto; /* grow and shrink, fill remaining space */
-  min-width: 0; /* prevents overflow if content is wide */
+  display: flex;
+  flex-direction: column;
+  max-width: 650px; /* Diperbesar dari 600px */
   background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 8px;
+  padding: 1.2rem; /* Diperbesar dari 1rem */
+  border-radius: 30px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .schedule-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: var(--primary-color);
+  margin-bottom: 0.75rem;
 }
 
 .schedule-table-container {
-  max-height: 400px; /* Set max height to make scrollable */
+  max-height: 350px;
   overflow-y: auto;
+  width: 100%; /* Memaksimalkan lebar */
 }
 
 .schedule-table {
   width: 100%;
+  min-width: 500px;
   border-collapse: collapse;
 }
 
 .schedule-table th,
 .schedule-table td {
-  padding: 0.75rem;
+  padding: 0.75rem; /* Diperbesar dari 0.5rem */
+  font-size: 1rem; /* Diperbesar dari 0.9rem */
   text-align: left;
   border-bottom: 1px solid var(--card-border);
 }
 
 .schedule-date-row {
-  background-color: var(--secondary-color);
+  font-size: 1rem; /* Diperbesar dari 1rem */
+  color: #090c02;
+  font-weight: medium;
 }
 
-.schedule-date-cell {
-  font-weight: bold;
-  text-align: left;
-}
-
-/* Calendar Styles */
-/* Since calendar-container styles exist inline in component, here only arrange positioning */
-.calendar-container {
-  flex: 0 0 287px; /* fixed width */
-  height: 287px; /* fixed height consistent with component */
-  box-sizing: border-box;
-  background: var(--card-bg);
-  border-radius: 30px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 30px 15px;
-  overflow: hidden;
-}
-
-/* Weekday row */
-.weekdays-grid,
-.dates-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 3px;
-}
-
-.weekdays-grid {
-  margin-bottom: 10px;
-}
-
-.weekday-cell {
-  font-size: 12px;
-  text-align: center;
-  color: #666;
-  font-weight: 500;
-  padding: 2px 0;
-}
-
-.dates-grid {
-  height: auto;
-}
-
-.date-cell {
-  width: 25px;
-  aspect-ratio: 1;
+.schedule-calendar-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 8px;
-  background: #f5f5f5;
-  cursor: pointer;
-  font-size: 12px;
-  transition: all 0.2s;
+  gap: 2.5rem; /* Diperbesar dari 2rem */
+  flex: 1;
+  align-items: flex-start;
 }
-
-.date-cell:hover {
-  background: var(--secondary-color);
-}
-
-.date-cell.active {
-  background: var(--primary-color);
-  color: white;
-  font-weight: bold;
-}
-
-.empty-cell {
-  aspect-ratio: 1;
-  background: transparent;
-}
-
 /* === Info Cards === */
 .info-section {
   display: flex;
@@ -160,11 +102,15 @@
   flex: 1;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 8px;
+  border-radius: 30px;
   padding: 1rem;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
 }
-
+.schedule-section card {
+  flex: 100px;
+  min-width: 0; /* prevents overflow if content is wide */
+  border-radius: 30px;
+}
 .card h3 {
   margin-bottom: 0.5rem;
 }
@@ -243,17 +189,20 @@
 }
 
 /* === Responsive === */
+/* Untuk mobile */
 @media (max-width: 768px) {
-  .top-section,
-  .schedule-calendar-wrapper {
-    flex-direction: column;
-  }
-  .calendar-container {
-    width: 100% !important;
-    height: auto !important;
-    margin-top: 1rem;
-  }
   .schedule-section {
-    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .schedule-table {
+    min-width: unset;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 0.5rem;
+    font-size: 0.95rem;
   }
 }
