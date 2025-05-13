@@ -38,10 +38,17 @@ const Schedule = () => {
           time: "07:00-08:30",
           room: "MIPA X.1",
         },
+
         {
           name: "Biologi",
           code: "BIO120D",
           time: "08:30-10:00",
+          room: "MIPA X.1",
+        },
+        {
+          name: "Bahasa Inggris",
+          code: "ING120D",
+          time: "10:30-12:00",
           room: "MIPA X.1",
         },
       ],
