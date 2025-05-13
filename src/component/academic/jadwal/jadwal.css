@@ -45,7 +45,7 @@
 .schedule-section {
   display: flex;
   flex-direction: column;
-  max-width: 650px; /* Diperbesar dari 600px */
+  max-width: 900px; /* Diperbesar dari 600px */
   background: var(--card-bg);
   padding: 1.2rem; /* Diperbesar dari 1rem */
   border-radius: 30px;
@@ -53,7 +53,7 @@
 }
 
 .schedule-title {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: var(--primary-color);
   margin-bottom: 0.75rem;
@@ -61,22 +61,21 @@
 
 .schedule-table-container {
   max-height: 350px;
+  max-width: 100%;
   overflow-y: auto;
   width: 100%; /* Memaksimalkan lebar */
 }
 
 .schedule-table {
   width: 100%;
-  min-width: 500px;
-  border-collapse: collapse;
+  min-width: 100px;
 }
 
 .schedule-table th,
 .schedule-table td {
-  padding: 0.75rem; /* Diperbesar dari 0.5rem */
-  font-size: 1rem; /* Diperbesar dari 0.9rem */
+  padding-right: 5.5rem;
+  font-size: 1rem;
   text-align: left;
-  border-bottom: 1px solid var(--card-border);
 }
 
 .schedule-date-row {
@@ -87,7 +86,7 @@
 
 .schedule-calendar-wrapper {
   display: flex;
-  gap: 2.5rem; /* Diperbesar dari 2rem */
+  gap: 3rem; /* Diperbesar dari 2rem */
   flex: 1;
   align-items: flex-start;
 }

@@ -2,6 +2,7 @@ import Sidebar from "../../sidebar/sidebar.jsx";
 import "./jadwal.css";
 import Calendar from "../../calendar/calendar.jsx";
 import React from "react";
+import UserInfo from "../../user-info/user-info.jsx";
 
 const Schedule = () => {
   const scheduleData = [
@@ -159,6 +160,7 @@ const CourseReview = () => (
 const Dashboard = () => (
   <div className="dashboard">
     <Sidebar />
+    <UserInfo />
     <main className="main-content">
       <div className="top-section">
         <Schedule />
