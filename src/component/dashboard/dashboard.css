@@ -15,47 +15,6 @@
   background-color: var(--background-color);
 }
 
-/* .sidebar {
-  width: 240px;
-  background-color: var(--primary-color);
-  color: white;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.brand {
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-.brand span {
-  color: var(--secondary-color);
-} */
-
-/* .menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.menu-item {
-  background: none;
-  border: none;
-  color: white;
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background 0.3s;
-}
-.menu-item:hover,
-.menu-item.active {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  font-weight: bold;
-} */
-
 /* === Main Content === */
 .main-content {
   flex: 1;
