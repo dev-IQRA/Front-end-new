@@ -8,9 +8,11 @@
   --highlight-color: orange;
 }
 
-.calendar-container {
-  position: relative;
-  box-sizing: border-box;
+.calendar-overlay {
+  position: absolute;
+  top: 150px;
+  right: 20px;
+  z-index: 1000;
 }
 
 .weekdays-grid,

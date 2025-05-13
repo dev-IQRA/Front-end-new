@@ -13,7 +13,7 @@ const Calendar = () => {
 
   return (
     <div
-      className="calendar-container"
+      className="calendar-overlay"
       style={{
         width: "287px",
         height: "287px",

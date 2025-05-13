@@ -54,7 +54,7 @@ const Schedule = () => {
         <table className="schedule-table">
           <thead>
             <tr>
-              <th>Hari/tangga;</th>
+              <th>Hari/tanggal</th>
               <th>Mata Pelajaran</th>
               <th>Ruang Kelas</th>
               <th>Waktu</th>
@@ -99,46 +99,45 @@ const Schedule = () => {
 };
 
 const Attendance = () => (
-  <section className="attendance-card card">
+  <div className="card attendance">
     <h3>Kehadiran</h3>
     <div>
       Semester
       <br />
       <strong>Genap 2024/2025</strong>
     </div>
-    <div className="attendance-value">100%</div>
+    <div className="value">100%</div>
     <div>Rata-rata kehadiran</div>
-  </section>
+  </div>
 );
-
 const Presence = () => (
-  <section className="presence-card card">
+  <section className="card presence">
     <h3>Presensi</h3>
     <ul>
       <li>
         <span>07:00 - Matematika</span>
-        <button className="presence-button">Presensi</button>
+        <button>Presensi</button>
       </li>
       <li>
         <span>08:30 - Bahasa Indonesia</span>
-        <button className="presence-button">Presensi</button>
+        <button>Presensi</button>
       </li>
     </ul>
   </section>
 );
 
 const Grade = () => (
-  <section className="grade-card card">
+  <div className="card grade">
     <h3>Nilai</h3>
     <div>Genap 2024/2025</div>
-    <div className="grade-value">93.2</div>
+    <div className="value">93.2</div>
     <div>Rata-rata nilai</div>
-  </section>
+  </div>
 );
 
 const CourseCard = ({ code, name }) => (
   <div className="course-card">
-    <div className="course-graphic" />
+    <div className="course-graphic"></div>
     <div className="course-info">
       <span className="course-code">{code}</span>
       <div className="course-name">{name}</div>
@@ -147,31 +146,32 @@ const CourseCard = ({ code, name }) => (
 );
 
 const CourseReview = () => (
-  <section className="course-review-section card">
+  <div className="course-review">
     <h3>Course Review</h3>
-    <div className="courses-list">
+    <div className="courses">
       <CourseCard code="MAT120D" name="Matematika" />
       <CourseCard code="KIM120E" name="Kimia" />
       <CourseCard code="BIO120E" name="Biologi" />
       <CourseCard code="FIS120E" name="Fisika" />
     </div>
-  </section>
+  </div>
 );
-
 const Dashboard = () => (
   <div className="dashboard">
     <Sidebar />
-    <Calendar />
     <main className="main-content">
       <div className="top-section">
         <Schedule />
       </div>
+
       <div className="info-section">
         <Attendance />
         <Presence />
         <Grade />
       </div>
+
       <CourseReview />
+      <Calendar />
     </main>
   </div>
 );
