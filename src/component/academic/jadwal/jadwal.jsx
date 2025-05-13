@@ -1,151 +1,144 @@
-import React from "react";
-import "./jadwal.css";
 import Sidebar from "../../sidebar/sidebar.jsx";
-// const Sidebar = () => (
-//   <aside className="sidebar">
-//     <div className="brand">
-//       IQRA<span>Student</span>
-//     </div>
-//     <nav className="menu">
-//       <button className="menu-item active">Dashboard</button>
-//       <div className="menu-item submenu-header">Academic</div>
-//       <div className="submenu">
-//         <NavLink to="/academic/jadwal" className="menu-item">
-//           Jadwal
-//         </NavLink>
-//         <NavLink to="/academic/nilai" className="menu-item">
-//           Nilai
-//         </NavLink>
-//         <NavLink to="/academic/kehadiran" className="menu-item">
-//           Kehadiran
-//         </NavLink>
-//       </div>
-//     </nav>
-//   </aside>
-// );
+import "./jadwal.css";
+import Calendar from "../../calendar/calendar.jsx";
+import React from "react";
 
-const Schedule = () => (
-  <div className="bg-white rounded-3xl p-6 mb-8 shadow-sm">
-    <h2 className="text-2xl font-semibold mb-4" style={{ color: "#28536b" }}>
-      Jadwal
-    </h2>
-
-    <div className="grid grid-cols-4 gap-4 mb-4 font-medium text-center">
-      <div>Hari/Tanggal</div>
-      <div>Mata Pelajaran</div>
-      <div>Ruang Kelas</div>
-      <div>Waktu</div>
-    </div>
-
-    {/* Schedule Items */}
-    <div className="divide-y divide-gray-200">
-      {" "}
-      {/* Adds a divider line */}
-      {[
+const Schedule = () => {
+  const scheduleData = [
+    {
+      date: "Senin, 12 Maret 2025",
+      subjects: [
         {
-          date: "Senin, 12 Maret 2025",
-          subjects: [
-            { name: "Matematika", code: "MAT120D", time: "07:00-08:30" },
-            { name: "Bahasa Indonesia", code: "IND120D", time: "08:30-10:00" },
-            { name: "Fisika", code: "FIS120D", time: "10:30-12:00" },
-          ],
+          name: "Matematika",
+          code: "MAT120D",
+          time: "07:00-08:30",
+          room: "MIPA X.1",
         },
         {
-          date: "Selasa, 13 Maret 2025",
-          subjects: [
-            { name: "Kimia", code: "KIM120D", time: "07:00-08:30" },
-            { name: "Biologi", code: "BIO120D", time: "08:30-10:00" },
-          ],
+          name: "Bahasa Indonesia",
+          code: "IND120D",
+          time: "08:30-10:00",
+          room: "MIPA X.1",
         },
-      ].map((day) => (
-        <div key={day.date} className="py-4">
-          <div className="font-medium">{day.date}</div>
-          {day.subjects.map((subject) => (
-            <div className="grid grid-cols-4 gap-4 mb-4" key={subject.code}>
-              <div></div>
-              <div>
-                <div className="text-lg" style={{ color: "#a72608" }}>
-                  {subject.name}
-                </div>
-                <div className="text-xs text-gray-500">{subject.code}</div>
-              </div>
-              <div className="text-center">MIPA X.1</div>
-              <div className="text-center">{subject.time}</div>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  </div>
-);
+        {
+          name: "Fisika",
+          code: "FIS120D",
+          time: "10:30-12:00",
+          room: "MIPA X.1",
+        },
+      ],
+    },
+    {
+      date: "Selasa, 13 Maret 2025",
+      subjects: [
+        {
+          name: "Kimia",
+          code: "KIM120D",
+          time: "07:00-08:30",
+          room: "MIPA X.1",
+        },
+        {
+          name: "Biologi",
+          code: "BIO120D",
+          time: "08:30-10:00",
+          room: "MIPA X.1",
+        },
+      ],
+    },
+  ];
 
-const Calendar = () => (
-  <div className="calendar">
-    <div className="user-info">
-      <div className="username-label">Username</div>
-      <div className="user-circle">NS</div>
-    </div>
-    <div className="month-label">Maret 2025</div>
-    <div className="calendar-days">
-      <span>Sun</span>
-      <span>Mon</span>
-      <span>Tue</span>
-      <span>Wed</span>
-      <span>Thu</span>
-      <span>Fri</span>
-      <span>Sat</span>
-    </div>
-    <div className="calendar-dates">
-      {Array.from({ length: 31 }, (_, i) => (
-        <span key={i} className={i === 20 ? "active-date" : ""}>
-          {i + 1}
-        </span>
-      ))}
-    </div>
-  </div>
-);
+  return (
+    <section className="schedule-section card">
+      <h2 className="schedule-title">Jadwal</h2>
+      <div className="schedule-table-container">
+        <table className="schedule-table">
+          <thead>
+            <tr>
+              <th>Hari/tangga;</th>
+              <th>Mata Pelajaran</th>
+              <th>Ruang Kelas</th>
+              <th>Waktu</th>
+            </tr>
+          </thead>
+          <tbody>
+            {scheduleData.map((day) => (
+              <React.Fragment key={day.date}>
+                <tr className="schedule-date-row">
+                  <td colSpan={1} className="schedule-date-cell">
+                    {day.date}
+                  </td>
+                </tr>
+                {day.subjects.map((subject) => (
+                  <tr className="schedule-subject-row" key={subject.code}>
+                    <td aria-hidden="true"></td>{" "}
+                    {/* Empty cell to align with date row above */}
+                    <td>
+                      <div
+                        className="subject-name"
+                        style={{ color: "#a72608", fontWeight: "600" }}
+                      >
+                        {subject.name}
+                      </div>
+                      <div className="subject-code">{subject.code}</div>
+                    </td>
+                    <td className="schedule-room text-center">
+                      {subject.room}
+                    </td>
+                    <td className="schedule-time text-center">
+                      {subject.time}
+                    </td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+};
 
 const Attendance = () => (
-  <div className="card attendance">
+  <section className="attendance-card card">
     <h3>Kehadiran</h3>
     <div>
       Semester
       <br />
       <strong>Genap 2024/2025</strong>
     </div>
-    <div className="value">100%</div>
+    <div className="attendance-value">100%</div>
     <div>Rata-rata kehadiran</div>
-  </div>
+  </section>
 );
 
 const Presence = () => (
-  <div className="card presence">
+  <section className="presence-card card">
     <h3>Presensi</h3>
     <ul>
       <li>
         <span>07:00 - Matematika</span>
-        <button>Presensi</button>
+        <button className="presence-button">Presensi</button>
       </li>
       <li>
         <span>08:30 - Bahasa Indonesia</span>
-        <button>Presensi</button>
+        <button className="presence-button">Presensi</button>
       </li>
     </ul>
-  </div>
+  </section>
 );
 
 const Grade = () => (
-  <div className="card grade">
+  <section className="grade-card card">
     <h3>Nilai</h3>
     <div>Genap 2024/2025</div>
-    <div className="value">93.2</div>
+    <div className="grade-value">93.2</div>
     <div>Rata-rata nilai</div>
-  </div>
+  </section>
 );
 
 const CourseCard = ({ code, name }) => (
   <div className="course-card">
-    <div className="course-graphic"></div>
+    <div className="course-graphic" />
     <div className="course-info">
       <span className="course-code">{code}</span>
       <div className="course-name">{name}</div>
@@ -154,24 +147,24 @@ const CourseCard = ({ code, name }) => (
 );
 
 const CourseReview = () => (
-  <div className="course-review">
+  <section className="course-review-section card">
     <h3>Course Review</h3>
-    <div className="courses">
+    <div className="courses-list">
       <CourseCard code="MAT120D" name="Matematika" />
       <CourseCard code="KIM120E" name="Kimia" />
       <CourseCard code="BIO120E" name="Biologi" />
-      <CourseCard code="FIS120E" name=" Fisika" />
+      <CourseCard code="FIS120E" name="Fisika" />
     </div>
-  </div>
+  </section>
 );
 
 const Dashboard = () => (
   <div className="dashboard">
     <Sidebar />
+    <Calendar />
     <main className="main-content">
       <div className="top-section">
         <Schedule />
-        <Calendar />
       </div>
       <div className="info-section">
         <Attendance />
