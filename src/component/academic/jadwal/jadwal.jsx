@@ -2,6 +2,7 @@ import Sidebar from "../../sidebar/sidebar.jsx";
 import "./jadwal.css";
 import Calendar from "../../calendar/calendar.jsx";
 import React from "react";
+import UserInfo from "../../user-info/user-info.jsx";
 
 const Schedule = () => {
   const scheduleData = [
@@ -37,10 +38,17 @@ const Schedule = () => {
           time: "07:00-08:30",
           room: "MIPA X.1",
         },
+
         {
           name: "Biologi",
           code: "BIO120D",
           time: "08:30-10:00",
+          room: "MIPA X.1",
+        },
+        {
+          name: "Bahasa Inggris",
+          code: "ING120D",
+          time: "10:30-12:00",
           room: "MIPA X.1",
         },
       ],
@@ -159,6 +167,7 @@ const CourseReview = () => (
 const Dashboard = () => (
   <div className="dashboard">
     <Sidebar />
+    <UserInfo />
     <main className="main-content">
       <div className="top-section">
         <Schedule />
