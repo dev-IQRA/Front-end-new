@@ -4,16 +4,6 @@ import React from "react";
 import "./dashboard.css";
 import Sidebar from "../sidebar/sidebar.jsx";
 
-// const Sidebar = () => (
-//   <aside className="sidebar">
-//     <div className="brand">IQRA<span>Student</span></div>
-//     <nav className="menu">
-//       <button className="menu-item active">Dashboard</button>
-//       <button className="menu-item">Academic</button>
-//     </nav>
-//   </aside>
-// );
-
 const Announcement = () => (
   <div className="announcement">
     <h2>Pengumuman</h2>
