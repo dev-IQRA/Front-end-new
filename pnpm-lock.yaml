@@ -11,6 +11,9 @@ importers:
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
+      project-rpl-terbaru:
+        specifier: 'link:'
+        version: 'link:'
       react:
         specifier: ^19.0.0
         version: 19.1.0
