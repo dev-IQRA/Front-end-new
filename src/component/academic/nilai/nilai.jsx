@@ -224,6 +224,8 @@ const NilaiLingkaran = ({ huruf }) => {
         justifyContent: "center",
         color: "#fff",
         fontWeight: "bold",
+        lineHeight: "40px",
+        textAlign: "center",
       }}
     >
       {huruf}
@@ -354,24 +356,23 @@ const Nilai = () => {
                 })()}
               </h3>
               <h2 className="section-title">Keterampilan</h2>
-              <div className="scrollable-container">
-                <table className="nilai-table">
-                  <tbody>
-                    {dataKeterampilanKelas.map((subject, index) => (
-                      <tr key={index}>
-                        <td>{subject.no}</td>
-                        <td>{subject.mapel}</td>
-                        <td>{subject.kode}</td>
-                        <td>{subject.semester}</td>
-                        <td>
-                          <NilaiLingkaran huruf={subject.huruf} />{" "}
-                        </td>
-                        <td>{subject.nilai}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+
+              <table className="nilai-table">
+                <tbody>
+                  {dataKeterampilanKelas.map((subject, index) => (
+                    <tr key={index}>
+                      <td>{subject.no}</td>
+                      <td>{subject.mapel}</td>
+                      <td>{subject.kode}</td>
+                      <td>{subject.semester}</td>
+                      <td>
+                        <NilaiLingkaran huruf={subject.huruf} />{" "}
+                      </td>
+                      <td>{subject.nilai}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -381,3 +382,5 @@ const Nilai = () => {
 };
 
 export default Nilai;
+
+//

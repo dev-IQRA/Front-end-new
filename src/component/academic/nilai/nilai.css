@@ -40,7 +40,7 @@ html,
 }
 
 .scrollable-container {
-  max-height: 400px; /* Tinggi maksimal container scroll */
+  max-height: 500px;
   overflow-y: auto;
   border: 1px solid #e0e0e0;
   border-radius: 6px;
@@ -60,10 +60,11 @@ html,
 .nilai-table {
   width: 100%;
   border-collapse: collapse;
-  font-weight: 700;
+  font-weight: 70%;
   font-size: 14px;
   color: #1a1a1a;
-  min-width: 100%; /* Table akan mengisi lebar container */
+  min-width: 100%;
+  table-layout: fixed;
 }
 
 .nilai-table thead tr {
@@ -73,6 +74,12 @@ html,
   background-color: #f9d9b1;
   color: #5a5a3d;
   font-weight: 600;
+  text-align: center;
+}
+.nilai-table th,
+.nilai-table td {
+  padding: 12px; /* Add padding for better spacing */
+  text-align: center; /* Center align the cell text */
 }
 /* Pencapaian and Kelanjutan Studi */
 .Pencapaian,
