@@ -1,20 +1,19 @@
-// app.jsx
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginPage from "./component/login-page/login-page";
-import Dashboard from "./component/dashboard/dashboard";
-import Jadwal from "./component/academic/jadwal/jadwal";
-import Nilai from "./component/academic/nilai/nilai";
-import Kehadiran from "./component/academic/kehadiran/kehadiran";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LoginPage from "./pages/auth/login-page.jsx";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/academic/jadwal" element={<Jadwal />} />
-        <Route path="/academic/nilai" element={<Nilai />} />
-        <Route path="/academic/kehadiran" element={<Kehadiran />} />
+        {/* Route untuk halaman login */}
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* Redirect root path ke /login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+
+        {/* Tambahkan route lain di sini jika ada, misal dashboard */}
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
       </Routes>
     </Router>
   );
