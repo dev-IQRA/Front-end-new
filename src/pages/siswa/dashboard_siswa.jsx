@@ -2,7 +2,7 @@
 
 import React from "react";
 import "./dashboard_siswa.css";
-// import Sidebar from ".../sidebar/sidebar.jsx";
+import Sidebar from "../../component/sidebar/sidebar_siswa";
 
 const Announcement = () => (
   <div className="announcement">

@@ -2,21 +2,21 @@ import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
-// Import halaman
-import Login from "../pages/Auth/Login";
+// Import halaman auth
+import Login from "../pages/auth/login-page";
 import NotFound from "../pages/NotFound";
 
 // Halaman Siswa
-import SiswaDashboard from "../pages/Siswa/Dashboard";
-import SiswaAcademic from "../pages/Siswa/Academic";
+import SiswaDashboard from "../pages/siswa/dashboard_siswa";
+import Jadwal from "../pages/siswa/Academic/Jadwal/jadwal_siswa";
+import Nilai from "../pages/siswa/academic/nilai/nilai_siswa";
+import Kehadiran from "../pages/siswa/academic/kehadiran/kehadiran_siswa";
 
 // Halaman Guru
-import GuruDashboard from "../pages/Guru/Dashboard";
-import GuruAcademic from "../pages/Guru/Academic";
+import GuruDashboard from "../pages/guru/dashboard_guru";
 
 // Halaman Admin
-import AdminDashboard from "../pages/Admin/Dashboard";
-import AdminKelolaAkun from "../pages/Admin/KelolaAkun";
+import AdminDashboard from "../pages/admin/dashboard_admin";
 
 // Komponen PrivateRoute untuk proteksi route
 const PrivateRoute = ({ children, allowedRoles }) => {
@@ -50,6 +50,7 @@ const AppRoutes = () => {
     <Routes>
       {/* Route Publik */}
       <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Navigate to="/login" replace />} />
 
       {/* Route Siswa */}
       <Route
@@ -61,13 +62,29 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/siswa/academic"
+        path="/siswa/academic/jadwal"
         element={
           <PrivateRoute allowedRoles={["siswa"]}>
-            <SiswaAcademic />
+            <Jadwal />
           </PrivateRoute>
         }
       />
+      <Route 
+        path="/siswa/academic/nilai"
+        element={
+          <PrivateRoute allowedRoles={["siswa"]}>
+            <Nilai />
+          </PrivateRoute>
+        }
+        />
+        <Route 
+          path="/siswa/academic/kehadiran"
+          element={
+            <PrivateRoute allowedRoles={["siswa"]}>
+              <Kehadiran />
+            </PrivateRoute>
+          }
+        />
 
       {/* Route Guru */}
       <Route
@@ -78,14 +95,7 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route
-        path="/guru/academic"
-        element={
-          <PrivateRoute allowedRoles={["guru"]}>
-            <GuruAcademic />
-          </PrivateRoute>
-        }
-      />
+      
 
       {/* Route Admin */}
       <Route
@@ -96,20 +106,8 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route
-        path="/admin/kelola-akun"
-        element={
-          <PrivateRoute allowedRoles={["admin"]}>
-            <AdminKelolaAkun />
-          </PrivateRoute>
-        }
-      />
+      
 
-      {/* Redirect root ke login atau dashboard sesuai kebutuhan */}
-      <Route
-        path="/"
-        element={<Navigate to="/login" replace />}
-      />
 
       {/* Halaman 404 */}
       <Route path="*" element={<NotFound />} />

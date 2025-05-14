@@ -1,36 +1,55 @@
-"use client";
-
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { UserContext } from "../../context/UserContext";
 import "./login-page.css";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState("");
   
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:3333/api/auth/login",
-        {
-          username,
-          password
-        },
-        {
-          withCredentials: true // penting agar cookie tersimpan
-        }
-      );
+    setError("");
+    
+    const users = {
+      siswa: {username: "siswa", password: "siswa123", role: "siswa"},
+      guru: {username: "guru", password: "guru123", role: "guru"},
+      admin: {username: "admin", password: "admin123", role: "admin"},
+    };
 
-      alert(response.data.message || "Login berhasil");
-      navigate("/dashboard");
-    } catch (error) {
-      console.error(error);
-      alert(error.response?.data?.message || "Login gagal");
+    const user = Object.values(users).find(
+      user => user.username === username && user.password === password
+    );
+
+    if(user) {
+      setUser(user);
+
+      if(rememberMe) {
+        localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("userRole", user.role);
+        localStorage.setItem("username", user.username);
+      }
+
+      switch(user.role) {
+        case "siswa":
+          navigate("/siswa/dashboard");
+          break;
+        case "guru":
+          navigate("/guru/dashboard");
+          break;
+        case "admin":
+          navigate("/admin/dashboard");
+          break;
+        default:
+          navigate("/login");
+      }
+    } else {
+      setError("Username atau password salah!");
     }
   };
 
@@ -46,6 +65,7 @@ const LoginPage = () => {
         </div>
         <div className="login-form-section">
           <h1 className="login-title">LOGIN</h1>
+          {error && <div className="error-message">{error}</div>}
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input

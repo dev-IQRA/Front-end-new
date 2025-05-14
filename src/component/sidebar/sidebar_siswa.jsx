@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"; // Import useState
 import { NavLink, useLocation } from "react-router-dom";
-import "./sidebar.css";
+import "./sidebar_siswa.css";
 
 const Sidebar = () => {
    const location = useLocation();

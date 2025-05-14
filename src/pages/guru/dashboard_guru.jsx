@@ -1,108 +1,101 @@
-// dashboard.jsx
-
+// dashboard_guru.jsx
 import React from "react";
-import "./dashboard.css";
-import Sidebar from "../sidebar/sidebar.jsx";
+import "./dashboard_guru.css";
+
+// Sidebar sederhana untuk role guru
+const Sidebar = () => {
+  return (
+    <aside className="sidebar">
+      <div className="sidebar-header">
+        <h2>Dashboard Guru</h2>
+      </div>
+      <nav className="menu">
+        <ul>
+          <li><a href="#dashboard" className="active">Dashboard</a></li>
+          <li><a href="#kelas">Kelas</a></li>
+          <li><a href="#absensi">Absensi</a></li>
+          <li><a href="#materi">Materi</a></li>
+          <li><a href="#nilai">Nilai</a></li>
+          <li><a href="#pengaturan">Pengaturan</a></li>
+        </ul>
+      </nav>
+    </aside>
+  );
+};
 
 const Announcement = () => (
-  <div className="announcement">
+  <section className="announcement">
     <h2>Pengumuman</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat
-      magna quis eros consequat porttitor...
+      Selamat datang di dashboard guru. Pastikan untuk memperbarui materi dan memantau absensi siswa secara rutin.
     </p>
-  </div>
+  </section>
 );
 
 const Calendar = () => (
-  <div className="calendar">
-    <div className="user-info">
-      <div className="username-label">Username</div>
-      <div className="user-circle">NS</div>
+  <section className="calendar">
+    <div className="calendar-header">
+      <div className="user-info">
+        <div className="username-label">Guru: Budi Santoso</div>
+        <div className="user-circle">BS</div>
+      </div>
+      <div className="month-label">Maret 2025</div>
     </div>
-    <div className="month-label">Maret 2025</div>
     <div className="calendar-days">
-      <span>Sun</span>
-      <span>Mon</span>
-      <span>Tue</span>
-      <span>Wed</span>
-      <span>Thu</span>
-      <span>Fri</span>
-      <span>Sat</span>
+      {["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"].map((day) => (
+        <span key={day}>{day}</span>
+      ))}
     </div>
     <div className="calendar-dates">
       {Array.from({ length: 31 }, (_, i) => (
-        <span key={i} className={i === 20 ? "active-date" : ""}>
+        <span key={i} className={i === 14 ? "active-date" : ""}>
           {i + 1}
         </span>
       ))}
     </div>
-  </div>
+  </section>
 );
 
-const Attendance = () => (
-  <div className="card attendance">
-    <h3>Kehadiran</h3>
-    <div>
-      Semester
-      <br />
-      <strong>Genap 2024/2025</strong>
-    </div>
-    <div className="value">100%</div>
-    <div>Rata-rata kehadiran</div>
-  </div>
+const AttendanceSummary = () => (
+  <section className="card attendance-summary">
+    <h3>Rekap Absensi</h3>
+    <div>Semester Genap 2024/2025</div>
+    <div className="value">98.5%</div>
+    <div>Rata-rata kehadiran siswa</div>
+  </section>
 );
 
-const Presence = () => (
-  <div className="card presence">
-    <h3>Presensi</h3>
+const CourseManagement = () => (
+  <section className="card course-management">
+    <h3>Manajemen Kelas</h3>
     <ul>
       <li>
         <span>07:00 - Matematika</span>
-        <button>Presensi</button>
+        <button>Detail</button>
       </li>
       <li>
         <span>08:30 - Bahasa Indonesia</span>
-        <button>Presensi</button>
+        <button>Detail</button>
+      </li>
+      <li>
+        <span>10:00 - Fisika</span>
+        <button>Detail</button>
       </li>
     </ul>
-  </div>
+  </section>
 );
 
-const Grade = () => (
-  <div className="card grade">
-    <h3>Nilai</h3>
-    <div>Genap 2024/2025</div>
-    <div className="value">93.2</div>
-    <div>Rata-rata nilai</div>
-  </div>
+const StudentPerformance = () => (
+  <section className="card student-performance">
+    <h3>Nilai Siswa</h3>
+    <div>Semester Genap 2024/2025</div>
+    <div className="value">Rata-rata: 87.4</div>
+  </section>
 );
 
-const CourseCard = ({ code, name }) => (
-  <div className="course-card">
-    <div className="course-graphic"></div>
-    <div className="course-info">
-      <span className="course-code">{code}</span>
-      <div className="course-name">{name}</div>
-    </div>
-  </div>
-);
-
-const CourseReview = () => (
-  <div className="course-review">
-    <h3>Course Review</h3>
-    <div className="courses">
-      <CourseCard code="MAT120D" name="Matematika" />
-      <CourseCard code="KIM120E" name="Kimia" />
-      <CourseCard code="BIO120E" name="Biologi" />
-      <CourseCard code="FIS120E" name="Fisika" />
-    </div>
-  </div>
-);
-
-const Dashboard = () => {
+const DashboardGuru = () => {
   return (
-    <div className="dashboard">
+    <div className="dashboard-guru">
       <Sidebar />
       <main className="main-content">
         <div className="top-section">
@@ -110,14 +103,13 @@ const Dashboard = () => {
           <Calendar />
         </div>
         <div className="info-section">
-          <Attendance />
-          <Presence />
-          <Grade />
+          <AttendanceSummary />
+          <CourseManagement />
+          <StudentPerformance />
         </div>
-        <CourseReview />
       </main>
     </div>
   );
 };
 
-export default Dashboard;
+export default DashboardGuru;

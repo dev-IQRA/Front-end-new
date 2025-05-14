@@ -1,29 +1,78 @@
+/* dashboard_guru.css */
+
 :root {
-  --primary-color: #891d00;
-  --secondary-color: #ffd2ae;
-  --background-color: #f8faf7;
-  --text-color: #333;
+  --primary-color: #004d40; /* hijau gelap */
+  --secondary-color: #a7ffeb; /* hijau muda */
+  --background-color: #f0f5f4;
+  --text-color: #222;
   --card-bg: #fff;
-  --card-border: #ddd;
-  --highlight-color: orange;
+  --card-border: #ccc;
+  --highlight-color: #00796b;
 }
 
 /* === Layout === */
-.dashboard {
+.dashboard-guru {
   display: flex;
   min-height: 100vh;
   background-color: var(--background-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* === Main Content === */
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-bottom: 1.2rem;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.menu a:hover,
+.menu a.active {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+/* Main content */
 .main-content {
   flex: 1;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  color: var(--text-color);
 }
 
+/* Top section: Announcement + Calendar */
 .top-section {
   display: flex;
   gap: 2rem;
@@ -35,7 +84,11 @@
   background: var(--card-bg);
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.announcement h2 {
+  margin-bottom: 0.8rem;
 }
 
 .calendar {
@@ -46,33 +99,43 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
 }
 
-.user-info {
+.calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.username-label {
-  font-weight: bold;
+
+.user-info {
+  display: flex;
+  flex-direction: column;
 }
+
+.username-label {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
 .user-circle {
   background: var(--highlight-color);
   color: white;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .month-label {
+  font-weight: 700;
+  font-size: 1.1rem;
   text-align: center;
-  font-weight: bold;
-  margin-top: 0.5rem;
 }
 
 .calendar-days,
@@ -81,124 +144,114 @@
   grid-template-columns: repeat(7, 1fr);
   gap: 0.5rem;
   text-align: center;
+  font-weight: 600;
+  color: var(--primary-color);
 }
+
 .calendar-dates span {
   padding: 0.5rem;
-  border-radius: 4px;
+  border-radius: 6px;
+  cursor: default;
+  user-select: none;
 }
+
 .calendar-dates .active-date {
   background-color: var(--highlight-color);
   color: white;
-  font-weight: bold;
+  font-weight: 700;
 }
 
-/* === Info Cards === */
+/* Info section: cards */
 .info-section {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
 }
+
 .card {
   flex: 1;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
-}
-.card h3 {
-  margin-bottom: 0.5rem;
-}
-.card .value {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  margin: 0.5rem 0;
+  padding: 1.5rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.presence ul {
+.card h3 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.card .value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--highlight-color);
+}
+
+/* Course Management list */
+.course-management ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.presence li {
+
+.course-management li {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-.presence button {
-  background: var(--secondary-color);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-/* === Course Review === */
-.course-review {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
-}
-.courses {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-.course-card {
-  background: var(--background-color);
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 1rem;
-  display: flex;
   align-items: center;
-  gap: 1rem;
-  flex: 1 1 200px;
-}
-.course-graphic {
-  width: 40px;
-  height: 40px;
-  background: var(--primary-color);
-  border-radius: 50%;
-}
-.course-info {
-  display: flex;
-  flex-direction: column;
-}
-.course-code {
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-.course-name {
-  font-size: 1rem;
-  color: var(--text-color);
+  margin-bottom: 0.8rem;
 }
 
-/* === Responsive === */
-@media (max-width: 768px) {
-  .dashboard {
+.course-management button {
+  background-color: var(--secondary-color);
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.course-management button:hover {
+  background-color: var(--highlight-color);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .top-section {
     flex-direction: column;
+  }
+  .announcement,
+  .calendar {
+    flex: unset;
+    width: 100%;
+  }
+  .info-section {
+    flex-direction: column;
+  }
+  .card {
+    width: 100%;
   }
   .sidebar {
     width: 100%;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    padding: 1rem;
+    justify-content: space-around;
   }
-  .menu {
-    flex-direction: row;
+  .menu ul {
+    display: flex;
     gap: 1rem;
   }
-  .main-content {
-    padding: 1rem;
+  .menu li {
+    margin-bottom: 0;
   }
-  .top-section,
-  .info-section {
-    flex-direction: column;
+  .menu a {
+    padding: 0.5rem 0.8rem;
   }
 }
