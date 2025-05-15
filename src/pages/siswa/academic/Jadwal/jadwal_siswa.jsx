@@ -1,8 +1,8 @@
-import Sidebar from "../../../../component/sidebar/sidebar_siswa";
+import Sidebar from "../../../../component/sidebar/sidebar_siswa.jsx";
 import "./jadwal_siswa.css";
 import Calendar from "../../../../component/common/calender.jsx";
 import React from "react";
-import UserInfo from "../../../../component/user-info/user-info";
+import UserInfo from "../../../../component/user-info/user-info.jsx";
 
 const Schedule = () => {
   const scheduleData = [

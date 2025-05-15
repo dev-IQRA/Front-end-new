@@ -7,8 +7,9 @@ import Login from "../pages/auth/login-page";
 import NotFound from "../pages/NotFound";
 
 // Halaman Siswa
-import SiswaDashboard from "../pages/siswa/dashboard_siswa";
-import Jadwal from "../pages/siswa/Academic/Jadwal/jadwal_siswa";
+import Dashboard from "../pages/siswa/dashboard_siswa";
+import Academic from "../pages/siswa/academic/academic_siswa";
+import Jadwal from "../pages/siswa/academic/jadwal/jadwal_siswa";
 import Nilai from "../pages/siswa/academic/nilai/nilai_siswa";
 import Kehadiran from "../pages/siswa/academic/kehadiran/kehadiran_siswa";
 
@@ -50,17 +51,27 @@ const AppRoutes = () => {
     <Routes>
       {/* Route Publik */}
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Navigate to="/login" replace />} />
+
 
       {/* Route Siswa */}
       <Route
         path="/siswa/dashboard"
         element={
           <PrivateRoute allowedRoles={["siswa"]}>
-            <SiswaDashboard />
+            <Dashboard />
           </PrivateRoute>
         }
       />
+
+      <Route
+        path="/siswa/academic"
+        element={
+          <PrivateRoute allowedRoles={["siswa"]}>
+            <Academic />  {/* Pastikan komponen Academic sudah dibuat */}
+          </PrivateRoute>
+        }
+      />
+
       <Route
         path="/siswa/academic/jadwal"
         element={

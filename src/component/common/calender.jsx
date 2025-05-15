@@ -12,20 +12,10 @@ const Calendar = () => {
   const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return (
-    <div
-      className="calendar-overlay"
-      style={{
-        width: "287px",
-        height: "287px",
-        background: "white",
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-        borderRadius: "30px",
-        padding: "30px 15px",
-      }}
-    >
+    <div className="calendar-overlay">
       {/* Header */}
       <div className="calendar-header">
-        <h3 style={{ margin: "0 0 15px 0", color: "var(--primary-color)" }}>
+        <h3>
           {new Date().toLocaleDateString("id-ID", {
             month: "long",
             year: "numeric",
@@ -65,4 +55,5 @@ const Calendar = () => {
     </div>
   );
 };
+
 export default Calendar;

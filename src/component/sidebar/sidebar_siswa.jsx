@@ -7,7 +7,7 @@ const Sidebar = () => {
   const [isSubmenuOpen, setSubmenuOpen] = useState(false);
 
 useEffect(() => {
-    if (location.pathname.startsWith("/academic")) {
+    if (location.pathname.startsWith("/siswa/academic")) {
       setSubmenuOpen(true);
     }
   }, [location]);
@@ -24,7 +24,7 @@ useEffect(() => {
       </div>
       <nav className="menu">
         <NavLink
-          to="/dashboard"
+          to="/siswa/dashboard"
           className={({ isActive }) =>
             isActive ? "menu-item active" : "menu-item"
           }
@@ -41,15 +41,18 @@ useEffect(() => {
 
       {isSubmenuOpen && (
         <div className="submenu">
-          <NavLink to="/academic/jadwal" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}
+          <NavLink to="/siswa/academic/jadwal" 
+          className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}
           >
             Jadwal
-
           </NavLink>
-          <NavLink to="/academic/nilai" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
+          <NavLink to="/siswa/academic/nilai" 
+          className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
+
             Nilai
           </NavLink>
-          <NavLink to="/academic/kehadiran" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
+          <NavLink to="/siswa/academic/kehadiran" 
+          className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
             Kehadiran
           </NavLink>
         </div>
