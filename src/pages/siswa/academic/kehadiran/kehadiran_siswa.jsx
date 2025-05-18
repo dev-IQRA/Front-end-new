@@ -1,6 +1,6 @@
 import React from "react";
 import "./kehadiran_siswa.css";
-import Sidebar from "../../../../component/sidebar/sidebar_siswa";
+import Sidebar from "../../../../component/sidebar/sidebar_admin";
 
 const Kehadiran = () => {
   // Mock attendance data
