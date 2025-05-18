@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './dashboard_admin.css';
-import { User } from 'lucide-react';
-import Sidebar from "../../../../component/sidebar/sidebar_siswa.jsx";
 
 function DashboardAdmin() {
   const [activeMenu, setActiveMenu] = useState('Dashboard');
@@ -37,10 +35,13 @@ function DashboardAdmin() {
   const calendarDays = generateCalendarDays();
   
   // Mock data for online users
-  const onlineUsers = Array(9).fill().map((_, i) => ({
+const onlineUsers = [];
+for (let i = 0; i < 9; i++) {
+  onlineUsers.push({
     username: 'Username',
     nim: 'NIM'
-  }));
+  });
+}
   
   return (
     <div className="dashboard-container">
@@ -89,7 +90,7 @@ function DashboardAdmin() {
             <div className="user-profile">
               <div className="username">Username<br /><span>NIS</span></div>
               <div className="avatar">
-                <User />
+                <div className="user-icon">U</div>
               </div>
             </div>
           </div>
@@ -131,7 +132,7 @@ function DashboardAdmin() {
               {onlineUsers.map((user, index) => (
                 <div key={index} className="online-user">
                   <div className="user-avatar">
-                    <User />
+                    <div className="user-icon">U</div>
                   </div>
                   <div className="user-info">
                     <div className="user-name">{user.username}</div>
