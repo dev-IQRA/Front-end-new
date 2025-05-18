@@ -1,121 +1,165 @@
-/* General resets and font */
-body,
-html,
-#root {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", sans-serif;
-  background-color: #f0f5cc;
-  min-height: 100vh;
-}
-
-.dashboard {
+/* Nilai Siswa Styles */
+.dashboard-container {
   display: flex;
   min-height: 100vh;
+  background-color: #f8f8d9; /* Light yellow/cream background */
+  padding-left: 270px; /* Add padding equal to sidebar width */
+  transition: padding-left 0.3s ease;
 }
 
-.main-content {
-  flex-grow: 1;
-  padding: 24px;
-  background-color: #f0f5cc;
-  overflow-x: auto;
-}
-
-/* Header */
-.page-title {
-  font-weight: 800;
-  font-size: 28px;
-  line-height: 1.1;
-  color: #2f4858;
-  margin-bottom: 4px;
-}
-/* Rekap Nilai container */
-.nilai-container {
-  width: 100%;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  margin-top: 16px;
-}
-
-.scrollable-container {
-  max-height: 500px;
+.dashboard-content {
+  flex: 1;
+  padding: 2rem;
   overflow-y: auto;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  margin: 12px 0;
-  background: #fff;
 }
 
-/* Section titles */
-.section-title {
-  font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: #1a1a1a;
+/* Page Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
-/* Table styles */
+.page-title {
+  font-size: 1.75rem;
+  color: #2c3e50;
+  margin: 0;
+  font-weight: 600;
+}
+
+.kelas-title {
+  font-size: 1.25rem;
+  color: #666;
+  margin: 0.25rem 0 0 0;
+  font-weight: 500;
+}
+
+/* Nilai Card */
+.nilai-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin: 0 0 1.5rem 0;
+  font-weight: 600;
+}
+
+/* Nilai Table */
 .nilai-table {
   width: 100%;
   border-collapse: collapse;
-  font-weight: 70%;
-  font-size: 14px;
-  color: #1a1a1a;
-  min-width: 100%;
-  table-layout: fixed;
+  margin-bottom: 1rem;
 }
 
-.nilai-table thead tr {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: #f9d9b1;
-  color: #5a5a3d;
-  font-weight: 600;
-  text-align: center;
-}
 .nilai-table th,
 .nilai-table td {
-  padding: 12px; /* Add padding for better spacing */
-  text-align: center; /* Center align the cell text */
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
 }
-/* Pencapaian and Kelanjutan Studi */
-.Pencapaian,
-.KelanjutanStudi {
+
+.nilai-table th {
+  font-weight: 600;
+  color: #2c3e50;
+  background-color: #ffefc1;
+}
+
+.nilai-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Nilai Pill */
+.nilai-pill {
+  width: auto;
+  min-width: 2rem;
+  height: 1.5rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+}
+
+/* Nilai Section */
+.nilai-section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.125rem;
+  color: #2c3e50;
+  margin: 1.5rem 0 1rem 0;
+  font-weight: 500;
+}
+
+/* Nilai Summary */
+.nilai-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.summary-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.summary-item {
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.summary-label {
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.average-grade {
+  font-size: 2.5rem;
   font-weight: 700;
-  font-size: 14px;
-  color: #1a1a1a;
-  margin-top: 16px;
-  margin-bottom: 4px;
+  color: #2c3e50;
 }
 
-/* Rata-rata */
-.Rata-rata {
-  font-weight: 700;
-  font-size: 24px;
-  color: #1a1a1a;
-  text-align: right;
-  margin-top: 0;
-  margin-bottom: 24px;
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .dashboard-container {
+    padding-left: 0;
+    padding-top: 60px;
+  }
 }
 
-/* NilaiLingkaran styles are inline in React, no CSS needed */
-
-/* Responsive */
 @media (max-width: 768px) {
-  .nilai-table {
-    min-width: 600px;
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
-  .page-title {
-    font-size: 24px;
+
+  .dashboard-content {
+    padding: 1rem;
   }
-  .section-title {
-    font-size: 16px;
+
+  .nilai-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
-  .filter-kelas button {
-    font-size: 12px;
-    padding: 5px 10px;
+
+  .nilai-table th,
+  .nilai-table td {
+    padding: 0.5rem;
   }
 }
