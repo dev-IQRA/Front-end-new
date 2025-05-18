@@ -1,4 +1,4 @@
-import Sidebar from "../../../../component/sidebar/sidebar_admin";
+import Sidebar from "../../../../component/sidebar/sidebar_siswa";
 import "./jadwal_siswa.css";
 import Calendar from "../../../../component/common/calender.jsx";
 import React from "react";

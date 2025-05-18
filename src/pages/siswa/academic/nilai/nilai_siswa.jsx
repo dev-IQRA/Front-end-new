@@ -1,6 +1,6 @@
 import React from "react";
 import "./nilai_siswa.css";
-import Sidebar from "../../../../component/sidebar/sidebar_admin";
+import Sidebar from "../../../../component/sidebar/sidebar_siswa";
 
 
 const dataPengetahuan = [
