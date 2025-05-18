@@ -1,4 +1,3 @@
-/* Global Styles and Variables */
 :root {
   --primary-color: #b62c1c;
   --secondary-color: #f7f6e0;
@@ -193,11 +192,6 @@
   color: white;
 }
 
-.user-icon {
-  font-weight: bold;
-  font-size: 16px;
-}
-
 /* Calendar Section */
 .calendar-section {
   background-color: #fff;
@@ -306,10 +300,6 @@
   align-items: center;
   justify-content: center;
   color: white;
-}
-
-.user-avatar .user-icon {
-  font-size: 14px;
 }
 
 .user-info {
