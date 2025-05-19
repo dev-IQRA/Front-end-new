@@ -1,209 +1,366 @@
-:root {
-  --primary-color: #891d00;
-  --secondary-color: #ffd2ae;
-  --background-color: #f8faf7;
-  --text-color: #333;
-  --card-bg: #fff;
-  --card-border: #ddd;
-  --highlight-color: orange;
-}
-
-/* === Layout === */
+/* Main layout */
 .dashboard {
   display: flex;
+  width: 100%;
   min-height: 100vh;
-  background-color: var(--background-color);
+  background-color: #f5f5f5;
+  position: relative;
 }
 
-/* === Main Content === */
+/* Fix for the sidebar overlap */
+.content-wrapper {
+  flex: 1;
+  margin-left: 240px; /* Same width as the sidebar */
+  width: calc(100% - 240px);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.user-info-container {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .content-wrapper {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content-wrapper {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+}
+
 .main-content {
-  flex: 1;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 20px;
+  width: 100%;
 }
 
-.top-section {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: nowrap; /* Prevent wrapping so they stay side by side */
-  justify-content: space-between;
-  align-items: flex-start;
+/* Card styling */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Wrapper for Schedule and Calendar side by side */
-.schedule-calendar-wrapper {
-  display: flex;
-  gap: 2rem;
-  flex: 1;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-/* Schedule Styles */
+/* Schedule section */
 .schedule-section {
-  display: flex;
-  flex-direction: column;
-  max-width: 900px; /* Diperbesar dari 600px */
-  background: var(--card-bg);
-  padding: 1.2rem; /* Diperbesar dari 1rem */
-  border-radius: 30px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .schedule-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  margin-bottom: 0.75rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
 }
 
 .schedule-table-container {
-  max-height: 350px;
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 10px;
+}
 
-  max-width: 100%;
+.schedule-table-responsive {
+  min-width: 600px;
+  width: 100%;
 }
 
 .schedule-table {
   width: 100%;
-  min-width: 100px;
-
+  border-collapse: collapse;
 }
 
-.schedule-table th,
-.schedule-table td {
-  padding-right: 5rem;
-  font-size: 1rem;
-
+.schedule-table th {
+  background-color: #f9f9f9;
+  padding: 12px;
   text-align: left;
+  color: #555;
+  font-weight: 600;
+}
+
+.schedule-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
 }
 
 .schedule-date-row {
-  font-size: 1rem; /* Diperbesar dari 1rem */
-  color: #090c02;
-  font-weight: medium;
+  background-color: #f9f9f9;
 }
 
-.schedule-calendar-wrapper {
-  display: flex;
-
-  gap: 3rem; /* Diperbesar dari 2rem */
-  flex: 1;
-  align-items: flex-start;
+.schedule-date-cell {
+  font-weight: 600;
+  color: #333;
+  padding: 10px 12px !important;
 }
-/* === Info Cards === */
+
+.date-column {
+  width: 160px;
+}
+
+.empty-date-cell {
+  display: table-cell;
+  width: 0;
+  visibility: hidden;
+  padding: 0 !important;
+}
+
+.hidden-cell {
+  width: 0;
+  padding: 0 !important;
+}
+
+.subject-name {
+  color: #a72608;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.subject-code {
+  color: #777;
+  font-size: 0.85rem;
+}
+
+.schedule-room, .schedule-time {
+  text-align: center;
+}
+
+/* Info section with cards */
 .info-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Attendance card */
+.attendance, .grade {
   display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.card {
-  flex: 1;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 30px;
-  padding: 1rem;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
-}
-.schedule-section card {
-  flex: 100px;
-  min-width: 0; /* prevents overflow if content is wide */
-  border-radius: 30px;
-}
-.card h3 {
-  margin-bottom: 0.5rem;
+.attendance-content,
+.grade-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
 }
 
-.card .value {
+.attendance-info {
+  margin-bottom: 15px;
+}
+
+.attendance-value, .grade .value {
+  margin-top: auto;
+}
+
+.value {
   font-size: 2rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  margin: 0.5rem 0;
+  font-weight: 700;
+  color: #a72608;
+  margin: 10px 0;
 }
 
-/* === Presence Styles === */
-.presence ul {
+.label {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Presence card */
+.presence-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.presence li {
+.presence-list li {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.presence button {
-  background: var(--secondary-color);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-/* === Course Review === */
-.course-review {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
-}
-.courses {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-.course-card {
-  background: var(--background-color);
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 1rem;
-  display: flex;
   align-items: center;
-  gap: 1rem;
-  flex: 1 1 200px;
-}
-.course-graphic {
-  width: 40px;
-  height: 40px;
-  background: var(--primary-color);
-  border-radius: 50%;
-}
-.course-info {
-  display: flex;
-  flex-direction: column;
-}
-.course-code {
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-.course-name {
-  font-size: 1rem;
-  color: var(--text-color);
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
 }
 
-/* === Responsive === */
-/* Untuk mobile */
-@media (max-width: 768px) {
-  .schedule-section {
-    max-width: 100%;
-    padding: 1rem;
+.presence-list li:last-child {
+  border-bottom: none;
+}
+
+.presence-button {
+  background-color: #a72608;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 15px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.presence-button:hover {
+  background-color: #851e06;
+}
+
+/* Course Review */
+.course-review h3 {
+  margin-bottom: 20px;
+}
+
+.courses-container {
+  overflow-x: auto;
+}
+
+.courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  min-width: 600px;
+}
+
+@media screen and (max-width: 768px) {
+  .courses {
+    min-width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+.course-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  transition: transform 0.2s;
+}
+
+.course-card:hover {
+  transform: translateY(-3px);
+}
+
+.course-graphic {
+  height: 100px;
+  background-color: #a72608;
+  background-image: linear-gradient(45deg, #a72608, #c13a1c);
+}
+
+.course-info {
+  padding: 15px;
+}
+
+.course-code {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.course-name {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Calendar container */
+.calendar-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .info-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .schedule-table th,
+  .schedule-table td {
+    padding: 8px;
+  }
+  
+  .value {
+    font-size: 1.7rem;
+  }
+  
+  /* Fix for mobile sidebar */
+  .content-wrapper {
+    margin-left: 0;
+    width: 100%;
   }
 
-  .schedule-table {
-    min-width: unset;
+  .calendar-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 2rem;
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .schedule-section {
+  width: 100%;
+  margin-bottom: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+  .schedule-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .schedule-table th,
   .schedule-table td {
-    padding: 0.5rem;
-    font-size: 0.95rem;
+    padding: 10px;
+    font-size: 0.9rem;
   }
+
+  .schedule-date-cell {
+    font-size: 0.9rem;
+  }
+
+  .subject-name {
+    font-size: 0.9rem;
+  }
+
+  .subject-code {
+    font-size: 0.8rem;
+  }
+
+  .schedule-calendar-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Schedule mengambil 2/3 lebar, Calendar 1/3 lebar */
+  gap: 20px;
+  margin-bottom: 20px;
+  }
+
+  .schedule-wrapper {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .calendar-wrapper {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  @media screen and (max-width: 768px) {
+  .schedule-calendar-container {
+    grid-template-columns: 1fr; /* Stack vertically on mobile */
+  }
+  }
+
+
 }

@@ -38,7 +38,6 @@ const Schedule = () => {
           time: "07:00-08:30",
           room: "MIPA X.1",
         },
-
         {
           name: "Biologi",
           code: "BIO120D",
@@ -59,48 +58,40 @@ const Schedule = () => {
     <section className="schedule-section card">
       <h2 className="schedule-title">Jadwal</h2>
       <div className="schedule-table-container">
-        <table className="schedule-table">
-          <thead>
-            <tr>
-              <th>Hari/tanggal</th>
-              <th>Mata Pelajaran</th>
-              <th>Ruang Kelas</th>
-              <th>Waktu</th>
-            </tr>
-          </thead>
-          <tbody>
-            {scheduleData.map((day) => (
-              <React.Fragment key={day.date}>
-                <tr className="schedule-date-row">
-                  <td colSpan={1} className="schedule-date-cell">
-                    {day.date}
-                  </td>
-                </tr>
-                {day.subjects.map((subject) => (
-                  <tr className="schedule-subject-row" key={subject.code}>
-                    <td aria-hidden="true"></td>{" "}
-                    {/* Empty cell to align with date row above */}
-                    <td>
-                      <div
-                        className="subject-name"
-                        style={{ color: "#a72608", fontWeight: "600" }}
-                      >
-                        {subject.name}
-                      </div>
-                      <div className="subject-code">{subject.code}</div>
-                    </td>
-                    <td className="schedule-room text-center">
-                      {subject.room}
-                    </td>
-                    <td className="schedule-time text-center">
-                      {subject.time}
+        <div className="schedule-table-responsive">
+          <table className="schedule-table">
+            <thead>
+              <tr>
+                <th className="date-column">Hari/tanggal</th>
+                <th>Mata Pelajaran</th>
+                <th>Ruang Kelas</th>
+                <th>Waktu</th>
+              </tr>
+            </thead>
+            <tbody>
+              {scheduleData.map((day) => (
+                <React.Fragment key={day.date}>
+                  <tr className="schedule-date-row">
+                    <td colSpan={4} className="schedule-date-cell">
+                      {day.date}
                     </td>
                   </tr>
-                ))}
-              </React.Fragment>
-            ))}
-          </tbody>
-        </table>
+                  {day.subjects.map((subject) => (
+                    <tr className="schedule-subject-row" key={subject.code}>
+                      <td className="empty-date-cell"></td>
+                      <td>
+                        <div className="subject-name">{subject.name}</div>
+                        <div className="subject-code">{subject.code}</div>
+                      </td>
+                      <td className="schedule-room">{subject.room}</td>
+                      <td className="schedule-time">{subject.time}</td>
+                    </tr>
+                  ))}
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   );
@@ -109,26 +100,30 @@ const Schedule = () => {
 const Attendance = () => (
   <div className="card attendance">
     <h3>Kehadiran</h3>
-    <div>
-      Semester
-      <br />
-      <strong>Genap 2024/2025</strong>
+    <div className="attendance-content">
+      <div className="attendance-info">
+        <div>Semester</div>
+        <strong>Genap 2024/2025</strong>
+      </div>
+      <div className="attendance-value">
+        <div className="value">100%</div>
+        <div className="label">Rata-rata kehadiran</div>
+      </div>
     </div>
-    <div className="value">100%</div>
-    <div>Rata-rata kehadiran</div>
   </div>
 );
+
 const Presence = () => (
   <section className="card presence">
     <h3>Presensi</h3>
-    <ul>
+    <ul className="presence-list">
       <li>
         <span>07:00 - Matematika</span>
-        <button>Presensi</button>
+        <button className="presence-button">Presensi</button>
       </li>
       <li>
         <span>08:30 - Bahasa Indonesia</span>
-        <button>Presensi</button>
+        <button className="presence-button">Presensi</button>
       </li>
     </ul>
   </section>
@@ -137,9 +132,11 @@ const Presence = () => (
 const Grade = () => (
   <div className="card grade">
     <h3>Nilai</h3>
-    <div>Genap 2024/2025</div>
-    <div className="value">93.2</div>
-    <div>Rata-rata nilai</div>
+    <div className="grade-content">
+      <div>Genap 2024/2025</div>
+      <div className="value">93.2</div>
+      <div className="label">Rata-rata nilai</div>
+    </div>
   </div>
 );
 
@@ -154,34 +151,45 @@ const CourseCard = ({ code, name }) => (
 );
 
 const CourseReview = () => (
-  <div className="course-review">
+  <div className="card course-review">
     <h3>Course Review</h3>
-    <div className="courses">
-      <CourseCard code="MAT120D" name="Matematika" />
-      <CourseCard code="KIM120E" name="Kimia" />
-      <CourseCard code="BIO120E" name="Biologi" />
-      <CourseCard code="FIS120E" name="Fisika" />
+    <div className="courses-container">
+      <div className="courses">
+        <CourseCard code="MAT120D" name="Matematika" />
+        <CourseCard code="KIM120E" name="Kimia" />
+        <CourseCard code="BIO120E" name="Biologi" />
+        <CourseCard code="FIS120E" name="Fisika" />
+      </div>
     </div>
   </div>
 );
+
 const Dashboard = () => (
   <div className="dashboard">
     <Sidebar />
-    <UserInfo />
-    <main className="main-content">
-      <div className="top-section">
-        <Schedule />
+    <div className="content-wrapper">
+      <div className="user-info-container">
+        <UserInfo />
       </div>
+      <main className="main-content">
+        <div className="schedule-calendar-container">
+          <div className="schedule-wrapper">
+            <Schedule />
+          </div>
+          <div className="calendar-wrapper">
+            <Calendar />
+          </div>
+        </div>
 
-      <div className="info-section">
-        <Attendance />
-        <Presence />
-        <Grade />
-      </div>
+        <div className="info-section">
+          <Attendance />
+          <Presence />
+          <Grade />
+        </div>
 
-      <CourseReview />
-      <Calendar />
-    </main>
+        <CourseReview />
+      </main>
+    </div>
   </div>
 );
 
