@@ -155,7 +155,7 @@ const DashboardSiswa = () => {
 
         <div className="calendar-widget">
           <div className="calendar-header">
-            <h3>Maret 2025</h3>
+            <h3>{getMonthName()}</h3>
             <div className="calendar-nav">
               <button onClick={previousMonth} className="calendar-nav-btn">
                 <ChevronLeft size={16} />
