@@ -1,53 +1,12 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Search } from "lucide-react"
+import { Search } from "lucide-react"
 import Sidebar from "../../component/sidebar/sidebar_siswa.jsx"
+import Calendar from "../../component/common/calender.jsx";
 import UserInfo from "../../component/user-info/user-info.jsx"
 import "./dashboard_siswa.css"
 
 const DashboardSiswa = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date(2025, 2)) // March 2025
-
-  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-
-  // Generate calendar days for the current month
-  const generateCalendarDays = () => {
-    const year = currentMonth.getFullYear()
-    const month = currentMonth.getMonth()
-    const firstDay = new Date(year, month, 1).getDay()
-    const daysInMonth = new Date(year, month + 1, 0).getDate()
-
-    const days = []
-
-    // Add empty cells for days before the first day of the month
-    for (let i = 0; i < firstDay; i++) {
-      days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>)
-    }
-
-    // Add days of the month
-    for (let day = 1; day <= daysInMonth; day++) {
-      const isToday = day === 29 // Highlighting day 29 as in the design
-      days.push(
-        <div key={day} className={`calendar-day ${isToday ? "today" : ""}`}>
-          {day}
-        </div>,
-      )
-    }
-
-    return days
-  }
-
-  const getMonthName = () => {
-    const options = { month: "long", year: "numeric" }
-    return currentMonth.toLocaleDateString("id-ID", options)
-  }
-
-  const previousMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))
-  }
-
-  const nextMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))
-  }
 
   // Sample announcement text
   const announcementText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat magna quis eros consequat porttitor. Morbi tempus sapien ac dui gravida, tempus pharetra magna interdum. Mauris justo elit, faucibus ut orci placerat, sagittis viverra nulla. Donec dictum consequat dui hendrerit condimentum. Nulla sagittis nisl est. Donec eget feugiat est. Donec non dictum augue. Donec sagittis fermentum.`
@@ -154,26 +113,10 @@ const DashboardSiswa = () => {
         </div>
 
         <div className="calendar-widget">
-          <div className="calendar-header">
-            <h3>{getMonthName()}</h3>
-            <div className="calendar-nav">
-              <button onClick={previousMonth} className="calendar-nav-btn">
-                <ChevronLeft size={16} />
-              </button>
-              <button onClick={nextMonth} className="calendar-nav-btn">
-                <ChevronRight size={16} />
-              </button>
-            </div>
-          </div>
-
-          <div className="calendar-grid">
-            {daysOfWeek.map((day) => (
-              <div key={day} className="calendar-day-name">
-                {day}
-              </div>
-            ))}
-            {generateCalendarDays()}
-          </div>
+          <Calendar 
+            selectedDate={currentMonth}
+            onDateChange={(newDate) => setCurrentMonth(newDate)}
+          />
         </div>
       </aside>
     </div>
