@@ -1,52 +1,138 @@
+/* Add this to your sidebar_siswa.css file */
+
 .sidebar {
-  width: 200px;
+  width: 250px;
   height: 100vh;
-  background-color: #a64b3a; /* Warna merah kecoklatan sesuai foto */
-  color: white;
+  background-color: #ba2d2d; /* Merah seperti di screenshot */
+  color: #ffffff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.sidebar-header {
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.sidebar-nav {
+  padding: 1rem 0;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu-item {
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-menu-link {
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.brand {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 40px;
-}
-
-.brand span {
-  font-weight: normal;
-}
-
-.menu {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.menu-item {
-  padding: 12px 20px;
-  border-radius: 8px;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: #ffffff;
   text-decoration: none;
-  color: white;
-  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.sidebar-menu-link:hover, 
+.sidebar-submenu-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu-link.active,
+.sidebar-submenu-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+
+.sidebar-menu-link span {
+  margin-left: 0.75rem;
+}
+
+.submenu-toggle {
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.menu-item:hover {
-  background-color: #8a3b2e;
-}
-
-.menu-item.active {
-  background-color: #f0a500; /* Warna kuning keemasan untuk menu aktif */
-  color: #3a1a00;
-  font-weight: 700;
-}
-.submenu {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 5px; /* Add some space above the submenu */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-icon-text {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon-text span {
+  margin-left: 0.75rem;
+}
+
+.sidebar-submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0.25rem 1.25rem;
+}
+
+.sidebar-submenu-item {
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-submenu-link {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-radius: 0.25rem;
+}
+
+.sidebar-submenu-link span {
+  margin-left: 0.75rem;
+}
+
+/* Mobile styles */
+.sidebar-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 110;
+  background-color: #ba2d2d;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+}
+
+@media screen and (min-width: 1024px) {
+  .sidebar-toggle {
+    display: none;
+  }
 }

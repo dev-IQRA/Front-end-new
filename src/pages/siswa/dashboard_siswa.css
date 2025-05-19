@@ -1,268 +1,302 @@
-/* Dashboard Admin Styles
-   Based on the IQRA Student Management System design
-*/
-
-:root {
-  --primary-color: #b62c1c;
-  --secondary-color: #f7f6e0;
-  --accent-color: #f1994e;
-  --text-dark: #333333;
-  --text-light: #ffffff;
-  --text-gray: #999999;
-  --border-radius: 12px;
-  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Main Container */
+/* Dashboard Siswa Styles */
 .dashboard-container {
   display: flex;
   min-height: 100vh;
-  background-color: var(--secondary-color);
-}
-
-/* Left Sidebar */
-.main-sidebar {
-  width: 270px;
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  display: flex;
-  flex-direction: column;
-  padding-top: 30px;
-}
-
-.logo {
-  padding: 0 25px;
-  margin-bottom: 25px;
-}
-
-.logo h1 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.logo span {
-  font-weight: normal;
-}
-
-.menu-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.menu-item {
-  padding: 15px 25px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: all 0.3s ease;
-}
-
-.menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.menu-item.active {
-  background-color: var(--secondary-color);
-  color: var(--text-dark);
-  font-weight: 500;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  margin-right: -20px;
-  padding-right: 45px;
+  background-color: #f8f8d9; /* Light yellow/cream background */
+  padding-left: 270px; /* Add padding equal to sidebar width */
+  transition: padding-left 0.3s ease;
 }
 
 /* Main Content Area */
-.main-content {
+.dashboard-content {
   flex: 1;
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.content-area {
-  flex: 1;
-  padding: 25px 20px;
+  padding: 2rem;
   overflow-y: auto;
-}
-
-/* Announcement Section */
-.announcement-section {
-  background-color: #ffffff;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  padding: 20px;
-}
-
-.announcement-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.announcement-header h2 {
-  font-size: 22px;
-  color: var(--text-dark);
-  font-weight: 600;
-}
-
-.announcement-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.btn-edit, .btn-add {
-  padding: 8px 15px;
-  border-radius: 20px;
-  border: 1px solid #dddddd;
-  background-color: #ffffff;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
-}
-
-.btn-edit:hover, .btn-add:hover {
-  background-color: #f5f5f5;
-}
-
-.announcement-body {
-  color: var(--text-gray);
-}
-
-.announcement-item {
-  margin-bottom: 30px;
-}
-
-.announcement-item p {
-  line-height: 1.6;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative; /* Add position relative */
+  z-index: 1; /* Ensure it's above other elements */
 }
 
 /* Right Sidebar */
-.right-sidebar {
-  width: 320px;
-  padding: 25px 20px;
+.dashboard-sidebar {
+  width: 300px;
+  background-color: #f8f8d9;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 1.5rem;
 }
 
-/* Top Bar - Search and User */
-.top-bar {
+/* User Profile */
+.user-profile {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+/* Announcements Section */
+.announcements-section {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.announcements-section h2 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+}
+
+.announcements-section p {
+  color: #888;
+  line-height: 1.6;
+}
+
+/* Info Cards Section */
+.info-cards-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.info-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.info-card h3 {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+}
+
+.info-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Attendance Card */
+.semester-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.semester-value {
+  font-weight: 500;
+  color: #333;
+}
+
+.attendance-value,
+.grade-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.attendance-label,
+.grade-label {
+  font-size: 0.875rem;
+  color: #666;
+  text-align: center;
+}
+
+/* Presence Card */
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.schedule-time {
+  font-size: 0.875rem;
+  color: #666;
+  width: 40px;
+}
+
+.schedule-details {
+  flex: 1;
+}
+
+.schedule-subject {
+  font-weight: 500;
+  color: #b22222; /* Dark red color */
+}
+
+.schedule-code {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.presence-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.presence-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Course Review Section */
+.course-review-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  position: relative; /* Add position relative */
+  z-index: 1; /* Ensure it's above other elements */
+}
+
+.section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.search-box input {
-  padding: 8px 15px;
-  border-radius: 20px;
-  border: 1px solid #dddddd;
-  background-color: #ffffff;
-  width: 150px;
-  font-size: 14px;
+.section-header h3 {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin: 0;
 }
 
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.search-container {
+  position: relative;
 }
 
-.username {
-  text-align: right;
-  font-size: 14px;
-  font-weight: 500;
+.search-input {
+  padding: 0.5rem 1rem;
+  padding-right: 2.5rem;
+  border-radius: 2rem;
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  width: 200px;
 }
 
-.user-id {
-  font-size: 12px;
-  color: var(--text-gray);
-  font-weight: normal;
+.search-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
 }
 
-.user-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.course-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  position: relative; /* Add position relative */
 }
 
-.avatar-circle {
-  width: 36px;
-  height: 36px;
-  background-color: var(--accent-color);
-  border-radius: 50%;
+.course-card {
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
 }
 
-/* Calendar Section */
-.calendar-section {
-  background-color: #ffffff;
-  border-radius: var(--border-radius);
-  padding: 15px;
-  box-shadow: var(--shadow);
+.course-card:hover {
+  transform: translateY(-5px);
+}
+
+.course-card-header {
+  height: 100px;
+  background-color: #e67e22; /* Orange color */
+}
+
+.course-card-content {
+  padding: 1rem;
+}
+
+.course-code {
+  font-size: 0.875rem;
+  color: #888;
+}
+
+.course-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-top: 0.25rem;
+}
+
+/* Calendar Widget */
+.calendar-widget {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
-.calendar-header h2 {
-  font-size: 18px;
-  color: var(--text-dark);
+.calendar-header h3 {
+  font-size: 1.25rem;
+  color: #b22222; /* Dark red color for the month title */
+  margin: 0;
 }
 
-.calendar-navigation {
+.calendar-nav {
   display: flex;
-  gap: 5px;
+  gap: 0.5rem;
 }
 
 .calendar-nav-btn {
   background: none;
   border: none;
-  font-size: 18px;
   cursor: pointer;
-  width: 25px;
-  height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.2s ease;
+  color: #666;
 }
 
-.calendar-nav-btn:hover {
-  color: var(--primary-color);
-}
-
-.calendar-weekdays {
+.calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-day-name {
   text-align: center;
-  font-size: 12px;
-  color: var(--text-gray);
-  margin-bottom: 5px;
-}
-
-.calendar-days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
+  font-size: 0.75rem;
+  color: #888;
+  padding: 0.5rem 0;
 }
 
 .calendar-day {
-  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  border-radius: 50%;
+  height: 2rem;
+  font-size: 0.875rem;
+  color: #333;
 }
 
 .calendar-day.empty {
@@ -270,143 +304,58 @@
 }
 
 .calendar-day.today {
-  background-color: var(--accent-color);
+  background-color: #ff9933; /* Orange highlight for today */
   color: white;
+  border-radius: 50%;
 }
 
-/* Online Users Section */
-.online-users-section {
-  background-color: #ffffff;
-  border-radius: var(--border-radius);
-  padding: 15px;
-  box-shadow: var(--shadow);
-}
-
-.online-users-section h2 {
-  font-size: 18px;
-  color: var(--text-dark);
-  margin-bottom: 15px;
-}
-
-.online-users-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.online-user {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.online-user-avatar .avatar-circle {
-  width: 30px;
-  height: 30px;
-}
-
-.online-user-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.online-user-name {
-  font-size: 14px;
-  color: var(--text-dark);
-}
-
-.online-user-nim {
-  font-size: 12px;
-  color: var(--text-gray);
-}
-
-/* Responsive Styles */
+/* Responsive adjustments */
 @media (max-width: 1200px) {
-  .main-content {
-    flex-direction: column;
-    overflow-y: auto;
-    height: auto;
+  .info-cards-section {
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .right-sidebar {
+
+  .info-card:last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard-container {
+    padding-left: 0; /* Remove padding on mobile */
+    padding-top: 60px; /* Add padding for the toggle button */
+  }
+
+  .dashboard-sidebar {
     width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
+    order: -1;
   }
-  
-  .calendar-section, 
-  .online-users-section {
-    flex: 1;
-    min-width: 300px;
+
+  .user-profile {
+    justify-content: flex-start;
   }
 }
 
 @media (max-width: 768px) {
-  .dashboard-container {
-    flex-direction: column;
+  .info-cards-section {
+    grid-template-columns: 1fr;
   }
-  
-  .main-sidebar {
-    width: 100%;
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-  
-  .menu-container {
-    flex-direction: row;
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
-  
-  .menu-item {
-    padding: 10px 20px;
-    white-space: nowrap;
-  }
-  
-  .menu-item.active {
-    border-radius: 20px;
-    margin-right: 0;
-    padding-right: 20px;
-  }
-  
-  .right-sidebar {
-    padding: 15px;
-  }
-  
-  .top-bar {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-}
 
-@media (max-width: 576px) {
-  .announcement-header {
+  .info-card:last-child {
+    grid-column: span 1;
+  }
+
+  .section-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 1rem;
   }
-  
-  .announcement-actions {
+
+  .search-input {
     width: 100%;
   }
-  
-  .btn-edit, .btn-add {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .top-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-  
-  .search-box input {
-    width: 100%;
-  }
-  
-  .user-profile {
-    width: 100%;
-    justify-content: flex-end;
+
+  .dashboard-content {
+    padding: 1rem;
   }
 }
