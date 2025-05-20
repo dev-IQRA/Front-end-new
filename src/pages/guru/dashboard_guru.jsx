@@ -1,145 +1,163 @@
-import React, { useState } from 'react';
-import './dashboard_guru.css';
-import Calendar from '../../component/common/calender';
+"use client"
+
+import { useState } from "react"
+import Sidebar_guru from "../../component/sidebar/sidebar_guru"
+import "./dashboard_guru.css"
+import Calendar from "../../component/common/calender.jsx"; 
 
 const DashboardGuru = () => {
-  // State declarations
-  const [selectedDate, setSelectedDate] = useState(29);
+  const [currentMonth, setCurrentMonth] = useState(new Date())
 
-  // Mock data
+  // Sample data for announcements
+  const announcements = [
+    {
+      id: 1,
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat magna quis eros consequat porttitor. Morbi tempus sapien ac dui gravida, tempus pharetra magna interdum. Mauris justo elit, faucibus ut orci placerat, sagittis viverra nulla. Donec dictum consequat dui hendrerit condimentum. Nulla sagittis nisl est. Donec eget feugiat est. Donec non dictum quam. Donec sagittis fermentum.",
+    },
+  ]
+
+  // Sample data for classes
   const todayClasses = [
-    { time: "07:00", endTime: "08:30", course: "Matematika", code: "MAT001" },
-    { time: "09:00", endTime: "10:30", course: "Bahasa Indonesia", code: "BIN001" }
-  ];
+    { id: 1, time: "07:00", endTime: "08:30", subject: "Matematika", code: "MAT120D", room: "R301" },
+    { id: 2, time: "09:00", endTime: "10:30", subject: "Bahasa Indonesia", code: "IND120G", room: "R204" },
+    { id: 3, time: "13:00", endTime: "14:30", subject: "Fisika", code: "FIS120E", room: "R105" },
+  ]
 
+  // Sample data for attendance statistics
+  const attendanceStats = {
+    semester: "Genap 2024/2025",
+    percentage: 100,
+    totalClasses: 24,
+    attendedClasses: 24,
+  }
+
+  // Sample data for courses
   const courses = [
-    { id: 1, code: "MAT001", name: "Matematika" },
-    { id: 2, code: "BIN001", name: "Bahasa Indonesia" },
-    { id: 3, code: "FIS001", name: "Fisika" },
-    { id: 4, code: "BIO001", name: "Biologi" }
-  ];
+    { id: 1, code: "MAT120D", name: "Matematika", students: 32, color: "#e67e22" },
+    { id: 2, code: "KIM120E", name: "Kimia", students: 28, color: "#e67e22" },
+    { id: 3, code: "BIO120E", name: "Biologi", students: 30, color: "#e67e22" },
+    { id: 4, code: "FIS120E", name: "Fisika", students: 26, color: "#e67e22" },
+  ]
+
+  // Navigation for calendar
+  const prevMonth = () => {
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))
+  }
+
+  const nextMonth = () => {
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))
+  }
+
+  // Format month and year for display
+  const formatMonthYear = (date) => {
+    return date.toLocaleDateString("id-ID", { month: "long", year: "numeric" })
+  }
 
   return (
     <div className="dashboard-container">
-      {/* Left Sidebar */}
-      <div className="sidebar">
-        <div className="logo">
-          <h2><span className="highlight">IQRA</span>Student</h2>
-        </div>
-        <nav className="sidebar-nav">
-          <div className="nav-item active">Dashboard</div>
-          <div className="nav-item">Academic</div>
-          {/* Add other menu items here */}
-        </nav>
-      </div>
+      <Sidebar_guru />
 
-      {/* Main Content */}
-      <div className="main-content">
-        {/* Announcement Section */}
-        <div className="announcement-section">
-          <h2>Pengumuman</h2>
-          <p className="placeholder-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Aenean placerat magna quis eros consequat porttitor. 
-            Morbi tempus sapien ac dui gravida, tempus pharetra 
-            magna interdum. Mauris justo elit, faucibus ut orci placerat, 
-            sagittis viverra nulla.
-          </p>
+      <div className="dashboard-content">
+        <div className="dashboard-header">
+          <div className="user-info">
+            <span>Username</span>
+            <span className="nip">NIP</span>
+            <div className="user-avatar"></div>
+          </div>
         </div>
 
-        {/* Stats and Schedule Section */}
-        <div className="stats-schedule-container">
-          {/* Attendance Stats */}
-          <div className="stats-box">
-            <div className="stats-header">
-              <h2>Kehadiran</h2>
-              <div className="semester-selector">
-                <span>Semester</span>
-                <span className="semester-value">Genap 2024/2025</span>
-              </div>
-            </div>
-            <div className="attendance-stats">
-              <div className="attendance-percentage">100 %</div>
-              <div className="attendance-label">Rata-rata kehadiran</div>
+        <div className="dashboard-grid">
+          {/* Announcements Section */}
+          <div className="dashboard-card announcement-card">
+            <h2>Pengumuman</h2>
+            <div className="announcement-content">
+              {announcements.map((announcement) => (
+                <p key={announcement.id}>{announcement.content}</p>
+              ))}
             </div>
           </div>
 
-          {/* Today's Schedule */}
-          <div className="schedule-box">
-            <h2>Presensi</h2>
-            <div className="schedule-list">
-              {todayClasses.map((cls, index) => (
-                <div key={index} className="schedule-item">
-                  <div className="time-info">
-                    <div className="start-time">{cls.time}</div>
-                    <div className="end-time">{cls.endTime}</div>
+          {/* Calendar Section */}
+          <div className="dashboard-card calendar-card">
+            <div className="calendar-header">
+              <h2>{formatMonthYear(currentMonth)}</h2>
+              <div className="calendar-nav">
+                <button onClick={prevMonth} className="calendar-nav-btn">
+                  &lt;
+                </button>
+                <button onClick={nextMonth} className="calendar-nav-btn">
+                  &gt;
+                </button>
+              </div>
+            </div>
+            <Calendar currentMonth={currentMonth} />
+          </div>
+
+          {/* Attendance Section */}
+          <div className="dashboard-card attendance-card">
+            <h2>Kehadiran</h2>
+            <div className="attendance-content">
+              <div className="semester-info">
+                <span>Semester</span>
+                <span className="semester-value">{attendanceStats.semester}</span>
+              </div>
+              <div className="attendance-percentage">
+                <h3>{attendanceStats.percentage} %</h3>
+                <p>Rata-rata kehadiran</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Today's Classes Section */}
+          <div className="dashboard-card classes-card">
+            <h2>Jadwal Mengajar Hari Ini</h2>
+            <div className="classes-content">
+              {todayClasses.map((cls) => (
+                <div key={cls.id} className="class-item">
+                  <div className="class-time">
+                    <span>{cls.time}</span>
+                    <span className="time-separator">-</span>
+                    <span>{cls.endTime}</span>
                   </div>
-                  <div className="course-info">
-                    <div className="course-name">{cls.course}</div>
-                    <div className="course-code">{cls.code}</div>
+                  <div className="class-info">
+                    <h4>{cls.subject}</h4>
+                    <p>{cls.code}</p>
                   </div>
-                  <button className="presence-button">Presensi</button>
+                  <div className="class-room">
+                    <span>{cls.room}</span>
+                  </div>
+                  <button className="presence-btn">Presensi</button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Courses Section */}
+          <div className="dashboard-card courses-section">
+            <div className="courses-header">
+              <h2>Mata Pelajaran</h2>
+              <div className="search-container">
+                <input type="text" placeholder="Search" className="search-input" />
+                <button className="search-btn">Search</button>
+              </div>
+            </div>
+            <div className="courses-grid">
+              {courses.map((course) => (
+                <div key={course.id} className="course-card" style={{ backgroundColor: course.color }}>
+                  <div className="course-card-content">
+                    <p className="course-code">{course.code}</p>
+                    <h3 className="course-name">{course.name}</h3>
+                    <p className="course-students">{course.students} siswa</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-
-        {/* Course Review Section */}
-        <div className="course-review-section">
-          <div className="section-header">
-            <h2>Course Review</h2>
-            <div className="search-container">
-              <button className="search-button">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="16" 
-                  height="16" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2"
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                >
-                  <circle cx="11" cy="11" r="8"/>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                </svg>
-                Search
-              </button>
-            </div>
-          </div>
-          <div className="course-cards">
-            {courses.map((course) => (
-              <div key={course.id} className="course-card">
-                <div className="course-banner"></div>
-                <div className="course-info">
-                  <div className="course-code">{course.code}</div>
-                  <div className="course-name">{course.name}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Right Sidebar */}
-      <div className="right-sidebar">
-        <div className="user-profile">
-          <span>Username</span>
-          <div className="profile-circle">
-            <span>NIS</span>
-          </div>
-        </div>
-
-        {/* Calendar Component */}
-        <Calendar 
-          selectedDate={selectedDate}
-          onDateSelect={setSelectedDate}
-        />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DashboardGuru;
+export default DashboardGuru
