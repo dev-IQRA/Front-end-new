@@ -82,26 +82,31 @@
 }
 
 .schedule-table th {
-  background-color: #f9f9f9;
-  padding: 12px;
-  text-align: left;
-  color: #555;
-  font-weight: 600;
+ text-align: center;
+ padding: 12px;
+ background-color: #f5f5f5;
+ 
 }
 
 .schedule-table td {
   padding: 12px;
-  border-bottom: 1px solid #eee;
+  vertical-align: middle;
 }
 
 .schedule-date-row {
   background-color: #f9f9f9;
 }
 
+.subject-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .schedule-date-cell {
-  font-weight: 600;
-  color: #333;
-  padding: 10px 12px !important;
+  background-color: #f9f9f9;
+  font-weight: 500;
+  padding: 12px;
 }
 
 .date-column {
@@ -109,10 +114,7 @@
 }
 
 .empty-date-cell {
-  display: table-cell;
-  width: 0;
-  visibility: hidden;
-  padding: 0 !important;
+  border: none;
 }
 
 .hidden-cell {
@@ -120,15 +122,19 @@
   padding: 0 !important;
 }
 
+.schedule-subject-row td {
+  border-bottom: 1px solid #eee;
+}
+
 .subject-name {
   color: #a72608;
-  font-weight: 600;
-  margin-bottom: 2px;
+  font-weight: 500;
+  margin-bottom: 4px;
 }
 
 .subject-code {
   color: #777;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
 .schedule-room, .schedule-time {

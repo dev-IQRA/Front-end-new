@@ -16,14 +16,14 @@ const Schedule = () => {
           room: "MIPA X.1",
         },
         {
-          name: "Bahasa Indonesia",
+          name: "Bahasa Indonesia", 
           code: "IND120D",
           time: "08:30-10:00",
           room: "MIPA X.1",
         },
         {
           name: "Fisika",
-          code: "FIS120D",
+          code: "FIS120D", 
           time: "10:30-12:00",
           room: "MIPA X.1",
         },
@@ -35,7 +35,7 @@ const Schedule = () => {
         {
           name: "Kimia",
           code: "KIM120D",
-          time: "07:00-08:30",
+          time: "07:00-08:30", 
           room: "MIPA X.1",
         },
         {
@@ -80,8 +80,10 @@ const Schedule = () => {
                     <tr className="schedule-subject-row" key={subject.code}>
                       <td className="empty-date-cell"></td>
                       <td>
-                        <div className="subject-name">{subject.name}</div>
-                        <div className="subject-code">{subject.code}</div>
+                        <div className="subject-info">
+                          <div className="subject-name">{subject.name}</div>
+                          <div className="subject-code">{subject.code}</div>
+                        </div>
                       </td>
                       <td className="schedule-room">{subject.room}</td>
                       <td className="schedule-time">{subject.time}</td>
