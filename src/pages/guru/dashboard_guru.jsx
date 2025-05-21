@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Sidebar_guru from "../../component/sidebar/sidebar_guru"
 import "./dashboard_guru.css"
-import Calendar from "../../component/common/calender.jsx"; 
+import Calendar from "../../component/common/calender.jsx"; // Sesuaikan dengan nama file yang benar
 
 const DashboardGuru = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date())
