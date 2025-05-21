@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import SidebarGuru from "../../component/sidebar/sidebar_guru"
 import UserInfo from "../../component/user-info/user-info"
+import  Calendar  from "../../component/common/calender.jsx"
 import "./academic_guru.css"
 
 const AcademicGuru = () => {
@@ -35,7 +36,7 @@ const AcademicGuru = () => {
         { subject: "Matematika", code: "MAT120D", room: "MIPA X.1", time: "07:00-08:30" },
         { subject: "Bahasa Indonesia", code: "IND120D", room: "MIPA X.1", time: "08:30-10:00" },
       ],
-    }
+    },
   ]
 
   // Sample courses data
@@ -110,6 +111,9 @@ const AcademicGuru = () => {
 
         <div className="main-content">
           <div className="content-left">
+            <div className="calender-section">
+              {generateCalendar()}
+            </div>
               <div className="schedule-section">
                 <h2>Jadwal</h2>
                 <div className="schedule-container">
@@ -146,7 +150,7 @@ const AcademicGuru = () => {
                     </tbody>
                   </table>
                 </div>
-</div>
+            </div>
 
             <div className="course-section">
               <div className="course-header">
@@ -184,7 +188,7 @@ const AcademicGuru = () => {
             </div>
           </div>
 
-          <div className="content-right">{generateCalendar()}</div>
+          <div className="content-right"></div>
         </div>
       </div>
     </div>
