@@ -1,0 +1,160 @@
+.academic-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #FFFAE7;
+  position: relative;
+}
+
+.academic-content {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 300px; /* Sesuaikan dengan lebar sidebar Anda */
+  width: calc(100% - 250px);
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 250px; /* Sesuaikan dengan kebutuhan */
+  background-color: #B31312;
+  z-index: 100;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  color: #000;
+  font-size: 24px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #FFA33C;
+}
+
+.schedule-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.date-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.schedule-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.subject-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.subject-name {
+  font-weight: bold;
+  color: #B31312;
+}
+
+.subject-code {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.calendar-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.calendar-nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.course-review {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-header input {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.course-card {
+  background: #B31312;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.course-image {
+  height: 120px;
+  background: linear-gradient(to bottom, #B31312, #FF6B6B);
+}
+
+.course-info {
+  padding: 1rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-code {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.course-name {
+  font-weight: bold;
+}
