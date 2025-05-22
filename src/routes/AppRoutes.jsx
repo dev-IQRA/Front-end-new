@@ -17,6 +17,7 @@ import Kehadiran from "../pages/siswa/academic/kehadiran/kehadiran_siswa";
 import DashboardGuru from "../pages/guru/dashboard_guru";
 import AcademicGuru from "../pages/guru/academic_guru";
 import AcademicSejarah from "../pages/guru/academic_sejarah";
+import TambahMateri from "../pages/guru/tambah_materi";
 
 // Halaman Admin
 import AdminDashboard from "../pages/admin/dashboard_admin";
@@ -119,6 +120,14 @@ const AppRoutes = () => {
         element={
           <PrivateRoute allowedRoles={["guru"]}>
             <AcademicSejarah />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/guru/academic/tambah-materi"
+        element={
+          <PrivateRoute allowedRoles={["guru"]}>
+            <TambahMateri />
           </PrivateRoute>
         }
       />
