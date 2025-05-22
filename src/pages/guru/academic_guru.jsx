@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import SidebarGuru from "../../component/sidebar/sidebar_guru"
 import UserInfo from "../../component/user-info/user-info"
+import  Calendar  from "../../component/common/calender.jsx"
 import "./academic_guru.css"
 
 const AcademicGuru = () => {
@@ -35,7 +36,7 @@ const AcademicGuru = () => {
         { subject: "Matematika", code: "MAT120D", room: "MIPA X.1", time: "07:00-08:30" },
         { subject: "Bahasa Indonesia", code: "IND120D", room: "MIPA X.1", time: "08:30-10:00" },
       ],
-    }
+    },
   ]
 
   // Sample courses data
@@ -48,57 +49,6 @@ const AcademicGuru = () => {
     { id: "KIM120E", name: "Kimia", image: "/course-cover.jpg" },
   ]
 
-  // Calendar generation
-  const generateCalendar = () => {
-    const year = currentMonth.getFullYear()
-    const month = currentMonth.getMonth()
-
-    const daysInMonth = new Date(year, month + 1, 0).getDate()
-    const firstDayOfMonth = new Date(year, month, 1).getDay()
-
-    const monthName = currentMonth.toLocaleString("default", { month: "long" })
-
-    const days = []
-    for (let i = 1; i <= daysInMonth; i++) {
-      days.push(i)
-    }
-
-    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-
-    return (
-      <div className="calendar">
-        <div className="calendar-header">
-          <h2>
-            {monthName} {year}
-          </h2>
-          <div className="calendar-nav">
-            <button onClick={() => setCurrentMonth(new Date(year, month - 1))}>&lt;</button>
-            <button onClick={() => setCurrentMonth(new Date(year, month + 1))}>&gt;</button>
-          </div>
-        </div>
-        <div className="calendar-grid">
-          {weekdays.map((day) => (
-            <div key={day} className="calendar-weekday">
-              {day}
-            </div>
-          ))}
-
-          {Array(firstDayOfMonth)
-            .fill(null)
-            .map((_, index) => (
-              <div key={`empty-${index}`} className="calendar-day empty"></div>
-            ))}
-
-          {days.map((day) => (
-            <div key={day} className={`calendar-day ${day === 29 ? "current-day" : ""}`}>
-              {day}
-            </div>
-          ))}
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className="academic-guru-container">
       <SidebarGuru activePage="academic" />
@@ -110,6 +60,9 @@ const AcademicGuru = () => {
 
         <div className="main-content">
           <div className="content-left">
+            <div className="calender-section">
+              <Calendar currentMonth={currentMonth} setCurrentMonth ={setCurrentMonth} />
+            </div>
               <div className="schedule-section">
                 <h2>Jadwal</h2>
                 <div className="schedule-container">
@@ -146,7 +99,7 @@ const AcademicGuru = () => {
                     </tbody>
                   </table>
                 </div>
-</div>
+            </div>
 
             <div className="course-section">
               <div className="course-header">
@@ -184,7 +137,7 @@ const AcademicGuru = () => {
             </div>
           </div>
 
-          <div className="content-right">{generateCalendar()}</div>
+          <div className="content-right"></div>
         </div>
       </div>
     </div>

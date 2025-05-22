@@ -32,10 +32,11 @@
 
 .content-left {
   flex: 1;
+  margin-right: 0;
 }
 
 .content-right {
-  width: 300px;
+  display: none;
 }
 
 /* Schedule section styles */
@@ -65,13 +66,19 @@
   border-collapse: collapse;
 }
 
-
-
 .schedule-table thead {
   position: sticky;
   top: 0;
   background-color: white;
   z-index: 1;
+}
+
+.calendar-section {
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .schedule-table td {
@@ -255,6 +262,10 @@
 .calendar-nav {
   display: flex;
   gap: 10px;
+}
+
+.calender-section {
+  margin-bottom: 32px; /* atau 2rem, bisa diubah sesuai kebutuhan */
 }
 
 .calendar-nav button {

@@ -136,7 +136,7 @@ const DashboardGuru = () => {
           {/* Courses Section */}
           <div className="dashboard-card courses-section">
             <div className="courses-header">
-              <h2>Mata Pelajaran</h2>
+              <h2>Course Review</h2>
               <div className="search-container">
                 <input type="text" placeholder="Search" className="search-input" />
                 <button className="search-btn">Search</button>
