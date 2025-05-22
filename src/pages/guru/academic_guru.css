@@ -93,6 +93,10 @@
 }
 
 .subject-column {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
   min-width: 200px;
 }
 
@@ -142,12 +146,18 @@
 .subject-name {
   color: #b22c00;
   font-weight: 600;
-  margin-bottom: 4px;
+  font-size: 16px;
+  margin: 0;
+}
+
+.schedule-table tr:not(:last-child) td {
+  border-bottom: 1px solid #eee;
 }
 
 .subject-code {
   color: #666;
   font-size: 14px;
+  margin-bottom: 0;
 }
 
 .room-cell,

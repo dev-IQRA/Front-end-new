@@ -1,5 +1,6 @@
 "use client"
 
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react"
 import SidebarGuru from "../../component/sidebar/sidebar_guru"
 import UserInfo from "../../component/user-info/user-info"
@@ -9,6 +10,7 @@ import "./academic_guru.css"
 const AcademicGuru = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [searchQuery, setSearchQuery] = useState("")
+  const navigate = useNavigate();
 
   // Sample class schedule data
   const scheduleData = [
@@ -34,6 +36,7 @@ const AcademicGuru = () => {
       date: "12 Maret 2025",
       classes: [
         { subject: "Matematika", code: "MAT120D", room: "MIPA X.1", time: "07:00-08:30" },
+        { subject: "Bahasa Indonesia", code: "IND120D", room: "MIPA X.1", time: "08:30-10:00" },
         { subject: "Bahasa Indonesia", code: "IND120D", room: "MIPA X.1", time: "08:30-10:00" },
       ],
     },
@@ -87,8 +90,8 @@ const AcademicGuru = () => {
                                 </td>
                               )}
                               <td className="subject-column">
-                                <div className="subject-name">{classItem.subject}</div>
-                                <div className="subject-code">{classItem.code}</div>
+                                <span className="subject-code">{classItem.code}</span>
+                                <span className="subject-name">{classItem.subject}</span>
                               </td>
                               <td>{classItem.room}</td>
                               <td>{classItem.time}</td>
@@ -123,7 +126,15 @@ const AcademicGuru = () => {
                       course.id.toLowerCase().includes(searchQuery.toLowerCase()),
                   )
                   .map((course) => (
-                    <div className="course-card" key={course.id}>
+                    <div className="course-card" 
+                    key={course.id}
+                    onClick={() => {
+                      if (course.id === "SEJ120E") {
+                        navigate("/guru/academic/sejarah");
+                      }
+                    }}
+                    style={{ cursor: "pointer" }}
+                    >
                       <div className="course-image">
                         <img src={course.image || "/placeholder.svg"} alt={course.name} />
                       </div>

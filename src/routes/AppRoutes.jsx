@@ -16,6 +16,7 @@ import Kehadiran from "../pages/siswa/academic/kehadiran/kehadiran_siswa";
 // Halaman Guru
 import DashboardGuru from "../pages/guru/dashboard_guru";
 import AcademicGuru from "../pages/guru/academic_guru";
+import AcademicSejarah from "../pages/guru/academic_sejarah";
 
 // Halaman Admin
 import AdminDashboard from "../pages/admin/dashboard_admin";
@@ -63,7 +64,6 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
-
       <Route
         path="/siswa/academic"
         element={
@@ -72,7 +72,6 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
-
       <Route
         path="/siswa/academic/jadwal"
         element={
@@ -107,7 +106,6 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
-
       <Route
         path="/guru/academic"
         element={
@@ -116,7 +114,14 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
-      
+       <Route
+        path="/guru/academic/sejarah"
+        element={
+          <PrivateRoute allowedRoles={["guru"]}>
+            <AcademicSejarah />
+          </PrivateRoute>
+        }
+      />
 
       {/* Route Admin */}
       <Route
