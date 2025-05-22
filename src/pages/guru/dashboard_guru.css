@@ -99,6 +99,7 @@
 
 /* Attendance Card */
 .attendance-card {
+   grid-column: span 6;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,17 +120,22 @@
 .attendance-content {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 24px;
+  gap: 24px;
 }
 
 .semester-info {
-  width: 100%;
+  width: auto;
+  min-width: 180px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   color: #6c757d;
   font-size: 1.1rem;
-  margin-bottom: 8px;
+  margin-bottom: 0;
   font-weight: 500;
 }
 
@@ -137,11 +143,19 @@
   font-weight: 500;
 }
 
+.attendance-percentage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .attendance-percentage h3 {
   font-size: 2.5rem;
   color: #2c6975;
   margin: 0;
 }
+
 
 .attendance-percentage p {
   color: #666;
@@ -267,15 +281,15 @@
 }
 
 .course-card {
-  background: none;
+  background: #fffbe7;
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
-  min-height: 210px; 
-  transition: box-shadow 0.2s;
+  min-height: 260px;
   cursor: pointer;
+  border: none;
 }
 
 .course-card:hover {
@@ -283,68 +297,45 @@
 }
 
 .course-image {
-  height: 150px;
+  height: 140px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
-  background: linear-gradient(to bottom, #b22c00, #ff9966);
+  background: linear-gradient(180deg, #b63a0b 0%, #ffdbb3 100%);
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
 }
 
 .course-image::before {
   content: attr(alt);
-  color: #fff;
+  color: #7a2a00;
   font-weight: 500;
   font-size: 1.1rem;
   position: absolute;
   top: 12px;
   left: 18px;
   z-index: 2;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  text-shadow: none;
 }
 
-.course-info {
-  background: #fff;
-  padding: 20px 18px 18px 18px;
-  display: flex;
-  flex-direction: column;
-  border-bottom-left-radius: 22px;
-  border-bottom-right-radius: 22px;
-  min-height: 90px;
-}
 
-.course-card-content {
-  padding: 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-}
-
-.course-code {
-  color: #888;
-  font-size: 1rem;
-  margin-bottom: 6px;
-}
 
 .course-name {
-  color: #c14400;
+  color: #b63a0b;
   font-size: 1.3rem;
   font-weight: 600;
-  margin: 0;
+  margin: 0 0 4px 0;
 }
 
-.course-card:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
-}
 
-.course-image {
-  /* Removed generic gradient to allow specific gradients per course */
+/* .course-image {
   height: 90px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
-}
+} */
 
 .course-image::before {
   content: attr(alt);
@@ -398,28 +389,16 @@
   min-height: 90px;
 }
 
-
-.course-card-content {
-  padding: 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-}
-
 .course-code {
-  color: #888;
+  color: #6c757d;
   font-size: 1rem;
   margin-bottom: 6px;
 }
 
-.course-name {
-  color: #c14400;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0;
-}
-
 .course-students {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  color: #444;
 }
 
 /* Responsive Styles */

@@ -144,13 +144,14 @@ const DashboardGuru = () => {
             </div>
             <div className="courses-grid">
               {courses.map((course) => (
-                <div key={course.id} className="course-card" style={{ backgroundColor: course.color }}>
-                  <div className="course-card-content">
-                    <p className="course-code">{course.code}</p>
-                    <h3 className="course-name">{course.name}</h3>
-                    <p className="course-students">{course.students} siswa</p>
-                  </div>
+                <div key={course.id} className="course-card">
+                  <div className="course-image"></div>
+                  <div className="course-info">
+                      <p className="course-code">{course.code}</p>
+                      <h3 className="course-name">{course.name}</h3>
+                      <p className="course-students">{course.students} siswa</p>
                 </div>
+              </div>
               ))}
             </div>
           </div>
