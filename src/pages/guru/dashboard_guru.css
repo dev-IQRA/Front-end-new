@@ -99,7 +99,15 @@
 
 /* Attendance Card */
 .attendance-card {
-  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0 24px 0;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  min-height: 260px;
 }
 
 .attendance-card h2 {
@@ -109,15 +117,20 @@
 }
 
 .attendance-content {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: center;
 }
 
 .semester-info {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  color: #6c757d;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .semester-value {
@@ -202,6 +215,7 @@
   cursor: pointer;
   font-size: 0.9rem;
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .presence-btn:hover {
@@ -248,26 +262,57 @@
 
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
 }
 
 .course-card {
-  border-radius: 15px;
+  background: none;
+  border-radius: 22px;
   overflow: hidden;
-  height: 180px;
-  position: relative;
-  color: white;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  min-height: 210px; 
+  transition: box-shadow 0.2s;
   cursor: pointer;
-  transition: transform 0.2s;
 }
 
 .course-card:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
 }
+
+.course-image {
+  background: linear-gradient(180deg, #e6643a 0%, #f9a36b 100%);
+  height: 90px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.course-image::before {
+  content: attr(alt);
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.1rem;
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.course-info {
+  background: #fff;
+  padding: 20px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+  min-height: 90px;
+}
+
 
 .course-card-content {
   padding: 20px;
@@ -275,14 +320,16 @@
 }
 
 .course-code {
-  margin: 0;
-  font-size: 0.8rem;
-  opacity: 0.8;
+  color: #888;
+  font-size: 1rem;
+  margin-bottom: 6px;
 }
 
 .course-name {
-  margin: 5px 0;
-  font-size: 1.2rem;
+  color: #c14400;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
 }
 
 .course-students {
