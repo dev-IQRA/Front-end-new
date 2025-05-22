@@ -345,28 +345,42 @@
   .schedule-calendar-container {
   display: grid;
   grid-template-columns: 2fr 1fr; /* Schedule mengambil 2/3 lebar, Calendar 1/3 lebar */
-  gap: 20px;
-  margin-bottom: 20px;
+  width: 100px;
+  margin-top:20px;
   }
 
   .schedule-wrapper {
   background: white;
   border-radius: 8px;
+  padding: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   }
 
   .calendar-wrapper {
   background: white;
   border-radius: 8px;
-  padding: 1rem;
+  padding: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
   }
 
-  @media screen and (max-width: 768px) {
+ @media screen and (max-width: 768px) {
   .schedule-calendar-container {
     grid-template-columns: 1fr; /* Stack vertically on mobile */
+    gap: 20px;
   }
+ }
+
+   .calendar-wrapper {
+    position: static;
+    margin-top: 20px;
   }
 
+ .schedule-wrapper,
+  .calendar-wrapper {
+    padding: 15px;
+  }
 
 }

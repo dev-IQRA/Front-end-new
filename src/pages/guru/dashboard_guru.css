@@ -283,7 +283,62 @@
 }
 
 .course-image {
-  background: linear-gradient(180deg, #e6643a 0%, #f9a36b 100%);
+  height: 150px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  background: linear-gradient(to bottom, #b22c00, #ff9966);
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+}
+
+.course-image::before {
+  content: attr(alt);
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.1rem;
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.course-info {
+  background: #fff;
+  padding: 20px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+  min-height: 90px;
+}
+
+.course-card-content {
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.course-code {
+  color: #888;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.course-name {
+  color: #c14400;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.course-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+}
+
+.course-image {
+  /* Removed generic gradient to allow specific gradients per course */
   height: 90px;
   display: flex;
   align-items: flex-start;
@@ -301,6 +356,36 @@
   left: 18px;
   z-index: 2;
   text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+/* Specific gradient backgrounds for each course box by nth-child */
+
+.courses-grid > .course-card:nth-child(1) .course-image {
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Sejarah */
+}
+
+.courses-grid > .course-card:nth-child(2) .course-image {
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Indonesia */
+}
+
+.courses-grid > .course-card:nth-child(3) .course-image {
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* English */
+}
+
+.courses-grid > .course-card:nth-child(4) .course-image {
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Matematika */
+}
+
+.courses-grid > .course-card:nth-child(5) .course-image {
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Fisika */
+}
+
+.courses-grid > .course-card:nth-child(6) .course-image {
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Kimia */
+}
+
+.courses-grid > .course-card:nth-child(7) .course-image {
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Biologi */
 }
 
 .course-info {
