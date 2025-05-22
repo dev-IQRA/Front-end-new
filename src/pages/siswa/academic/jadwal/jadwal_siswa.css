@@ -68,6 +68,8 @@
 .schedule-table-container {
   width: 100%;
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: 400px;
   margin-bottom: 10px;
 }
 
@@ -274,11 +276,6 @@
   color: #333;
 }
 
-/* Calendar container */
-.calendar-container {
-  width: 100%;
-  overflow-x: auto;
-}
 
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
@@ -345,15 +342,18 @@
   .schedule-calendar-container {
   display: grid;
   grid-template-columns: 2fr 1fr; /* Schedule mengambil 2/3 lebar, Calendar 1/3 lebar */
-  width: 100px;
+  gap: 30px;
+  width: 100%;
   margin-top:20px;
-  }
+}
 
   .schedule-wrapper {
   background: white;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  height: fit-content;
+  min-width:0;
   }
 
   .calendar-wrapper {
@@ -366,21 +366,34 @@
   top: 20px;
   }
 
- @media screen and (max-width: 768px) {
+ @media screen and (max-width: 992px) {
   .schedule-calendar-container {
     grid-template-columns: 1fr; /* Stack vertically on mobile */
     gap: 20px;
   }
- }
 
-   .calendar-wrapper {
+  .calendar-wrapper {
     position: static;
     margin-top: 20px;
   }
 
- .schedule-wrapper,
+ }
+ 
+ @media screen and (max-width: 768px) {
+  .schedule-calendar-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .calendar-wrapper {
+    margin-top: 20px;
+  }
+
+  .schedule-wrapper,
   .calendar-wrapper {
     padding: 15px;
   }
+}
+
 
 }
