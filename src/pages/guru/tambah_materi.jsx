@@ -1,4 +1,7 @@
 import React, { useState } from "react"
+import { useContext } from "react";
+import { MateriContext } from "../../context/MateriContext";
+import { useNavigate } from "react-router-dom";
 import SidebarGuru from "../../component/sidebar/sidebar_guru"
 import UserInfo from "../../component/user-info/user-info"
 import "./tambah_materi.css"
@@ -8,6 +11,10 @@ const TambahMateri = () => {
   const [judulMateri, setJudulMateri] = useState("")
   const [deskripsi, setDeskripsi] = useState("")
   const [file, setFile] = useState(null)
+  const { addMateri } = useContext(MateriContext);
+  const navigate = useNavigate();
+
+
 
   const toggleOpen = () => setIsOpen(!isOpen)
 
@@ -22,9 +29,13 @@ const TambahMateri = () => {
   }
 
   const handleDone = () => {
-    // Implement form submission logic here
-    alert("Materi submitted!")
-  }
+    addMateri({
+      judul: judulMateri,
+      deskripsi,
+      file,
+    });
+    navigate("/guru/academic/sejarah");
+  };
 
   return (
     <div className="tambah-materi-container">
