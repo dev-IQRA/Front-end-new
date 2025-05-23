@@ -17,6 +17,7 @@ import Kehadiran from "../pages/siswa/academic/kehadiran/kehadiran_siswa";
 import DashboardGuru from "../pages/guru/dashboard_guru";
 import AcademicGuru from "../pages/guru/academic_guru";
 import AcademicSejarah from "../pages/guru/academic_sejarah";
+import AcademicBahasaIndonesia from "../pages/guru/academic_indonesia";
 import TambahMateri from "../pages/guru/tambah_materi";
 
 // Halaman Admin
@@ -124,6 +125,14 @@ const AppRoutes = () => {
         }
       />
       <Route
+        path="/guru/academic/indonesia"
+        element={
+          <PrivateRoute allowedRoles={["guru"]}>
+            <AcademicBahasaIndonesia />
+          </PrivateRoute>
+        }
+      />
+      <Route
         path="/guru/academic/tambah-materi"
         element={
           <PrivateRoute allowedRoles={["guru"]}>
@@ -141,9 +150,6 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
-      
-
-
       {/* Halaman 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
