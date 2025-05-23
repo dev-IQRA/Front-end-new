@@ -131,6 +131,8 @@ const AcademicGuru = () => {
                     onClick={() => {
                       if (course.id === "SEJ120E") {
                         navigate("/guru/academic/sejarah");
+                      } else if (course.id === "IND120E") {
+                        navigate("/guru/academic/indonesia");
                       }
                     }}
                     style={{ cursor: "pointer" }}

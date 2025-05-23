@@ -36,7 +36,7 @@ const FileItem = ({ name, size, date, file }) => {
   );
 };
 
-const AcademicSejarah = () => {
+const AcademicBahasaIndonesia = () => {
   const { materiList } = useContext(MateriContext);
   const navigate = useNavigate();
 
@@ -51,7 +51,7 @@ const AcademicSejarah = () => {
 
         <div className="main-content">
           <h5 className="subtitle">Matematika dan Ilmu Pengetahuan Alam</h5>
-          <h1 className="title">SEJARAH</h1>
+          <h1 className="title">ENGLISH</h1>
 
           <div className="tabs">
             <button className="tab-button active">Course</button>
@@ -95,4 +95,4 @@ const AcademicSejarah = () => {
   );
 };
 
-export default AcademicSejarah;
+export default AcademicBahasaIndonesia;
