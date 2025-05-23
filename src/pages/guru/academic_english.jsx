@@ -4,7 +4,7 @@ import { MateriContext } from "../../context/MateriContext";
 import SidebarGuru from "../../component/sidebar/sidebar_guru";
 import UserInfo from "../../component/user-info/user-info";
 import CollapsibleSection from "../../component/common/CollapsibleSection";
-import "./academic_sejarah.css";
+import "./academic_english.css";
 
 // Komponen FileItem yang sudah clickable jika ada file
 const FileItem = ({ name, size, date, file }) => {
@@ -36,7 +36,7 @@ const FileItem = ({ name, size, date, file }) => {
   );
 };
 
-const AcademicBahasaIndonesia = () => {
+const AcademicEnglish = () => {
   const { materiList } = useContext(MateriContext);
   const navigate = useNavigate();
 
@@ -95,4 +95,4 @@ const AcademicBahasaIndonesia = () => {
   );
 };
 
-export default AcademicBahasaIndonesia;
+export default AcademicEnglish;

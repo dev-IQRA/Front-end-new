@@ -4,7 +4,7 @@ import { MateriContext } from "../../context/MateriContext";
 import SidebarGuru from "../../component/sidebar/sidebar_guru";
 import UserInfo from "../../component/user-info/user-info";
 import CollapsibleSection from "../../component/common/CollapsibleSection";
-import "./academic_indonesia.css";
+import "./academic_matematika.css";
 
 // Komponen FileItem yang sudah clickable jika ada file
 const FileItem = ({ name, size, date, file }) => {
@@ -36,7 +36,7 @@ const FileItem = ({ name, size, date, file }) => {
   );
 };
 
-const AcademicBahasaIndonesia = () => {
+const AcademicMatematika = () => {
   const { materiList } = useContext(MateriContext);
   const navigate = useNavigate();
 
@@ -51,7 +51,7 @@ const AcademicBahasaIndonesia = () => {
 
         <div className="main-content">
           <h5 className="subtitle">Matematika dan Ilmu Pengetahuan Alam</h5>
-          <h1 className="title">BAHASA INDONESIA</h1>
+          <h1 className="title">MATEMATIKA</h1>
 
           <div className="tabs">
             <button className="tab-button active">Course</button>
@@ -95,4 +95,4 @@ const AcademicBahasaIndonesia = () => {
   );
 };
 
-export default AcademicBahasaIndonesia;
+export default AcademicMatematika;
