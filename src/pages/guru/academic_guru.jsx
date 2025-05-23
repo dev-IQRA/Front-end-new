@@ -133,6 +133,14 @@ const AcademicGuru = () => {
                         navigate("/guru/academic/sejarah");
                       } else if (course.id === "IND120E") {
                         navigate("/guru/academic/indonesia");
+                      } else if (course.id === "ENG120E") {
+                        navigate("/guru/academic/english");
+                      } else if (course.id === "MAT120E") {
+                        navigate("/guru/academic/matematika");
+                      } else if (course.id === "FIS120E") {
+                        navigate("/guru/academic/fisika");
+                      } else if (course.id === "KIM120E") {
+                        navigate("/guru/academic/kimia");
                       }
                     }}
                     style={{ cursor: "pointer" }}

@@ -18,6 +18,10 @@ import DashboardGuru from "../pages/guru/dashboard_guru";
 import AcademicGuru from "../pages/guru/academic_guru";
 import AcademicSejarah from "../pages/guru/academic_sejarah";
 import AcademicBahasaIndonesia from "../pages/guru/academic_indonesia";
+import AcademicMatematika from "../pages/guru/academic_matematika";
+import AcademicFisika from "../pages/guru/academic_fisika";
+import AcademicEnglish from "../pages/guru/academic_english";
+import AcademicKimia from "../pages/guru/academic_kimia";
 import TambahMateri from "../pages/guru/tambah_materi";
 
 // Halaman Admin
@@ -129,6 +133,46 @@ const AppRoutes = () => {
         element={
           <PrivateRoute allowedRoles={["guru"]}>
             <AcademicBahasaIndonesia />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/guru/academic/english"
+        element={
+          <PrivateRoute allowedRoles={["guru"]}>
+            <AcademicEnglish />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/guru/academic/matematika"
+        element={
+          <PrivateRoute allowedRoles={["guru"]}>
+            <AcademicMatematika />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/guru/academic/matematika"
+        element={
+          <PrivateRoute allowedRoles={["guru"]}>
+            <AcademicMatematika />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/guru/academic/fisika"
+        element={
+          <PrivateRoute allowedRoles={["guru"]}>
+            <AcademicFisika />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/guru/academic/kimia"
+        element={
+          <PrivateRoute allowedRoles={["guru"]}>
+            <AcademicKimia />
           </PrivateRoute>
         }
       />
