@@ -81,6 +81,24 @@ const dataKeterampilan = [
     nilai: 82,
     kelas: "VIII",
   },
+   {
+    no: 4,
+    kode: "FIS2023",
+    mapel: "Fisika",
+    semester: 4,
+    huruf: "C",
+    nilai: 67,
+    kelas: "VIII",
+  },
+  {
+    no: 5,
+    kode: "MTP2023",
+    mapel: "Fisika",
+    semester: 4,
+    huruf: "BC",
+    nilai: 73,
+    kelas: "VIII",
+  },
 ]
 
 const getColorByHuruf = (huruf) => {
@@ -119,7 +137,9 @@ const NilaiSiswa = () => {
     return [...new Set([...dataPengetahuan, ...dataKeterampilan].map((d) => d.kelas))]
   }, [])
 
-  const [kelasAktif, setKelasAktif] = useState(kelasTersedia[0])
+ const [kelasAktif, setKelasAktif] = useState(() => {
+    return kelasTersedia.length > 0 ? kelasTersedia[0] : "DefaultKelas";
+  });
 
   const dataPengetahuanKelas = useMemo(() => {
     return dataPengetahuan.filter((d) => d.kelas === kelasAktif)
