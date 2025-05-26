@@ -11,16 +11,18 @@
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
+  overflow-x: visible;
 }
 
 /* Right Sidebar */
 .dashboard-sidebar {
-  width: 300px;
+  width: 320px;
   background-color: #f8f8d9;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  box-sizing: border-box;
 }
 
 /* Announcements Section */

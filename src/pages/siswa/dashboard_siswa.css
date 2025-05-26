@@ -135,7 +135,7 @@
 
 .schedule-subject {
   font-weight: 500;
-  color: #b22222; /* Dark red color */
+  color: #b22222; 
 }
 
 .schedule-code {
@@ -221,8 +221,8 @@
 }
 
 .course-card-header {
-  height: 100px;
-  background-color: #e67e22; /* Orange color */
+  height: 125px;
+  background-color: #e67e22; 
 }
 
 .course-card-content {
@@ -243,10 +243,11 @@
 
 /* Calendar Widget */
 .calendar-widget {
-  background-color: white;
+background-color: white;
   border-radius: 1rem;
   padding: 1.5rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden; /* Mencegah overflow */
 }
 
 .calendar-header {
@@ -279,8 +280,8 @@
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(7, 1fr); 
+  gap: 0.5rem; 
 }
 
 .calendar-day-name {
@@ -294,20 +295,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2rem;
+  height: 2.5rem;
+  width: 2.5rem;
   font-size: 0.875rem;
   color: #333;
+  background-color: #fff;
+  border-radius: 50%;
+  box-sizing: border-box;;
 }
 
 .calendar-day.empty {
   visibility: hidden;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
-.calendar-day.today {
-  background-color: #ff9933; /* Orange highlight for today */
-  color: white;
-  border-radius: 50%;
-}
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
