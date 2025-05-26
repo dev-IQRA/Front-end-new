@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import "./calender.css";    
 
-const Calendar = ({ currentMonth }) => {
+const Calendar = () => {
   const today = new Date();
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(today);
 
   const currentYear = currentMonth.getFullYear();
   const currentMonthIndex = currentMonth.getMonth();
 
   const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  // Tambahkan fungsi untuk mengubah bulan
+  const handlePrevMonth = () => {
+    setCurrentMonth(new Date(currentYear, currentMonthIndex - 1));
+  };
+
+  const handleNextMonth = () => {
+    setCurrentMonth(new Date(currentYear, currentMonthIndex + 1));
+  };
 
   const firstDayOfMonth = new Date(currentYear, currentMonthIndex, 1).getDay();
   const daysInMonth = new Date(currentYear, currentMonthIndex + 1, 0).getDate();
@@ -17,8 +27,21 @@ const Calendar = ({ currentMonth }) => {
     setSelectedDate(new Date(currentYear, currentMonthIndex, day));
   };
 
+  // Format nama bulan
+  const monthNames = [
+    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+  ];
+
   return (
     <div className="calendar-container">
+      {/* Tambahkan header kalender dengan navigasi */}
+      <div className="calendar-header">
+        <button onClick={handlePrevMonth}>&lt;</button>
+        <h3>{monthNames[currentMonthIndex]} {currentYear}</h3>
+        <button onClick={handleNextMonth}>&gt;</button>
+      </div>
+
       <div className="weekdays-grid">
         {weekdays.map((day) => (
           <div key={day} className="weekday-cell">
