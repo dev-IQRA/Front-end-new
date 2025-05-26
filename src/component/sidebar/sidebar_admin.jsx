@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react"
 import { Home, User, LogOut, Menu, X } from "lucide-react"
+import { Link, useLocation } from "react-router-dom"
 import "./sidebar_admin.css"
 
 const Sidebar = () => {
   const [isMobile, setIsMobile] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
+  const location = useLocation()
 
   // Check if screen is mobile size
   useEffect(() => {
@@ -50,17 +52,17 @@ const Sidebar = () => {
 
         <nav className="sidebar-nav">
           <ul className="sidebar-menu">
-            <li className="sidebar-menu-item active">
-              <a href="#" className="sidebar-menu-link">
+            <li className={`sidebar-menu-item ${location.pathname === "/admin/dashboard" ? "active" : ""}`}>
+              <Link to="/admin/dashboard" className="sidebar-menu-link">
                 <Home size={20} />
                 <span>Dashboard</span>
-              </a>
+              </Link>
             </li>
-            <li className="sidebar-menu-item">
-              <a href="#" className="sidebar-menu-link">
+            <li className={`sidebar-menu-item ${location.pathname === "/admin/kelolaakun" ? "active" : ""}`}>
+              <Link to="/admin/kelolaakun" className="sidebar-menu-link">
                 <User size={20} />
                 <span>Kelola Akun</span>
-              </a>
+              </Link>
             </li>
             {/* Additional menu items can be added here */}
           </ul>
