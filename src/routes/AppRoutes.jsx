@@ -26,6 +26,7 @@ import TambahMateri from "../pages/guru/tambah_materi";
 
 // Halaman Admin
 import AdminDashboard from "../pages/admin/dashboard_admin";
+import KelolaAkunAdmin from "../pages/admin/kelolaakun_admin";
 
 // Komponen PrivateRoute untuk proteksi route
 const PrivateRoute = ({ children, allowedRoles }) => {
@@ -194,6 +195,15 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
+      <Route
+        path="/admin/kelolaakun"
+        element={
+          <PrivateRoute allowedRoles={["admin"]}>
+            <KelolaAkunAdmin />
+          </PrivateRoute>
+        }
+      />
+
       {/* Halaman 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
