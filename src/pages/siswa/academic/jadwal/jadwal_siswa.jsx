@@ -4,6 +4,7 @@ import Calendar from "../../../../component/common/calender.jsx";
 import React from "react";
 import UserInfo from "../../../../component/user-info/user-info.jsx";
 
+// Bagian Schedule dengan pembungkus scrollable
 const Schedule = () => {
   const scheduleData = [
     {
@@ -52,11 +53,35 @@ const Schedule = () => {
         },
       ],
     },
+    {
+      date: "Selasa, 14 Maret 2025",
+      subjects: [
+        {
+          name: "Kimia",
+          code: "KIM120D",
+          time: "07:00-08:30", 
+          room: "MIPA X.1",
+        },
+        {
+          name: "Biologi",
+          code: "BIO120D",
+          time: "08:30-10:00",
+          room: "MIPA X.1",
+        },
+        {
+          name: "Bahasa Inggris",
+          code: "ING120D",
+          time: "10:30-12:00",
+          room: "MIPA X.1",
+        },
+      ],
+    },
   ];
 
   return (
     <section className="schedule-section card">
       <h2 className="schedule-title">Jadwal</h2>
+      {/* Pembungkus tabel dengan scroll */}
       <div className="schedule-table-container">
         <div className="schedule-table-responsive">
           <table className="schedule-table">
