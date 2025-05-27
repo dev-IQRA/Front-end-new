@@ -1,48 +1,53 @@
-/* Dashboard Siswa Styles */
+/* Dashboard Siswa Styles - FIXED VERSION */
 .dashboard-container {
   display: flex;
   min-height: 100vh;
   background-color: #f8f8d9;
   position: relative;
-  padding-left: 270px;
-  padding-right: 320px;
+  padding: 0;
   overflow-x: hidden;
+  justify-content: flex-start;
+  gap: 0;
 }
 
+/* PERBAIKAN: Konten utama dengan spacing yang lebih realistis */
 .dashboard-content {
-  flex: 1;
-  padding: 2rem;
-  margin-right: 320px;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
   width: 100%;
-  min-width: 0;
+  /* PERBAIKAN: Hitung ulang max-width dengan benar */
+  max-width: calc(100vw - 320px); /* 270px sidebar + 50px buffer */
+  margin-left: 0; /* PERBAIKAN: Hilangkan margin-left berlebihan */
+  margin-right: 320px; /* PERBAIKAN: Space untuk sidebar + buffer */
+  padding: 32px 16px; /* PERBAIKAN: Padding yang lebih wajar */
   box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
 }
 
 .dashboard-sidebar {
-  width: 320px;
-  padding: 20px;
-  background-color: #f8f8d9;
-  height: 100vh;
   position: fixed;
-  top: 0;
   right: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  overflow-y: auto;
+  top: 0;
+  width: 270px;
+  height: 100vh;
+  background: #b22222;
   z-index: 100;
+  padding: 20px;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
-/* User Profile */
-.user-profile {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1rem;
+/* Semua section utama lebar sama dan simetris */
+.announcements-section,
+.info-cards-section,
+.calendar-widget,
+.course-review-section {
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
 }
 
 /* Announcements Section */
@@ -210,9 +215,10 @@
   color: #888;
 }
 
+/* Course cards grid agar simetris */
 .course-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   position: relative;
 }
@@ -258,7 +264,7 @@
   padding: 15px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   min-height: 380px;
-  margin: 0;
+  margin: 0 0 24px 0;
   box-sizing: border-box;
 }
 
@@ -323,58 +329,84 @@
   width: 2.5rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1400px) {
-  .dashboard-container {
-    padding-left: 200px;
-    padding-right: 240px;
+/* PERBAIKAN: User info positioning yang tidak bentrok */
+.user-info {
+  position: fixed;
+  top: 32px;
+  right: 290px; /* PERBAIKAN: Posisi di luar sidebar */
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 0.5rem 1.25rem;
+}
+
+/* PERBAIKAN: Responsive breakpoints yang lebih akurat */
+@media (min-width: 1025px) {
+  .dashboard-content {
+    margin-right: 320px;
+    max-width: calc(100vw - 320px);
   }
+}
+
+@media (max-width: 1400px) {
   .dashboard-sidebar {
     width: 240px;
   }
   .dashboard-content {
-    margin-right: 240px;
+    margin-right: 290px; /* 240px + 50px buffer */
+    max-width: calc(100vw - 290px);
+  }
+  .user-info {
+    right: 260px; /* Adjust sesuai sidebar baru */
   }
 }
 
 @media (max-width: 1200px) {
-  .info-cards-section {
-    grid-template-columns: 1fr 1fr;
-  }
-  .info-card:last-child {
-    grid-column: span 2;
-  }
-  .dashboard-container {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .dashboard-content {
-    margin-right: 0;
-  }
   .dashboard-sidebar {
     width: 200px;
-    padding: 10px;
+  }
+  .dashboard-content {
+    margin-right: 250px; /* 200px + 50px buffer */
+    max-width: calc(100vw - 250px);
+  }
+  .user-info {
+    right: 220px;
   }
 }
 
-/* --- CORE REVISI SIDEBAR DRAWER MOBILE --- */
+/* PERBAIKAN: Mobile layout yang lebih bersih */
 @media (max-width: 1024px) {
+  .user-info {
+    right: 16px;
+    top: 16px;
+    padding: 0.5rem 1rem;
+  }
+  
   .dashboard-container {
     flex-direction: column;
     padding: 60px 0 0 0;
     position: relative;
     overflow-x: hidden;
   }
+  
   .dashboard-content {
-    margin-right: 0;
+    margin-left: 0;
+    margin-right: 0; /* PERBAIKAN: Reset margin di mobile */
     padding: 1rem;
     width: 100%;
+    max-width: 100vw;
     min-height: calc(100vh - 60px);
   }
+  
   /* Drawer sidebar: default off-canvas */
   .dashboard-sidebar {
     position: fixed;
     top: 0;
+    left: auto;
     right: -320px;
     width: 280px;
     height: 100vh;
@@ -386,10 +418,12 @@
     display: flex;
     flex-direction: column;
   }
+  
   /* Saat sidebar-open, tampilkan sidebar */
   .dashboard-sidebar.sidebar-open {
     right: 0;
   }
+  
   /* Overlay untuk drawer */
   .sidebar-overlay {
     display: none;
@@ -399,59 +433,70 @@
     z-index: 999;
     transition: opacity 0.3s;
   }
+  
   .sidebar-overlay.active {
     display: block;
   }
+  
   .user-profile {
     justify-content: flex-start;
   }
+  
   .info-cards-section {
     grid-template-columns: 1fr;
   }
+  
   .info-card:last-child {
     grid-column: span 1;
   }
-   .calendar-widget {
+  
+  .calendar-widget {
     background: white;
     border-radius: 8px;
     padding: 1rem;
-    margin: 0;
+    margin: 0 0 24px 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
-
+  
   .calendar-grid {
     gap: 0.25rem;
   }
-
+  
   .calendar-day {
     max-width: 2rem;
     font-size: 0.8rem;
   }
+  
+  .course-cards {
+    grid-template-columns: 1fr;
+  }
 }
-
-/* --- END CORE REVISI SIDEBAR DRAWER MOBILE --- */
 
 @media (max-width: 768px) {
   .dashboard-content {
-  padding: 0.75rem;
+    padding: 0.75rem;
   }
-  .info-cards-section,
-  .course-cards {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-  .section-header {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .search-input {
-    width: 100%;
-  }
+  
   .announcements-section,
   .info-card,
   .course-card {
     padding: 1rem;
     border-radius: 0.75rem;
+  }
+  
+  .info-cards-section,
+  .course-cards {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .search-input {
+    width: 100%;
   }
 }
 
@@ -460,30 +505,33 @@
     padding: 0.5rem;
     gap: 0.5rem;
   }
+  
   .announcements-section,
   .info-card,
   .course-card {
     padding: 0.5rem;
     border-radius: 0.5rem;
   }
+  
   .calendar-widget {
     padding: 8px;
     min-height: 200px;
   }
+  
   .calendar-day {
     font-size: 0.7rem;
     max-width: 1.5rem;
   }
-
-    .dashboard-sidebar {
+  
+  .dashboard-sidebar {
     width: 260px;
   }
-
+  
   .calendar-widget {
     padding: 0.5rem;
     min-height: auto;
   }
-
+  
   .calendar-day {
     max-width: 1.5rem;
     font-size: 0.7rem;

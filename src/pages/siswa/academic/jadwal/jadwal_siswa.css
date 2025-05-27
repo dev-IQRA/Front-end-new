@@ -53,11 +53,15 @@
 
 .schedule-section {
   width: 100%;
-  min-height: 200px;
-  max-height: 450px;
-  overflow: hidden;
+  min-height: 200px; 
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.schedule-section.card {
+  padding-bottom: 10px;
+  height: auto; 
+  min-height: 0;
 }
 
 .schedule-title {
@@ -67,16 +71,14 @@
 }
 
 .schedule-table-container {
-  width: 100%;
-  overflow-x: auto;
+  max-height: 400px; 
   overflow-y: auto;
-  max-height: 400px;
-  margin-bottom: 10px;
+  margin-bottom: 0; 
+  padding-bottom: 0; 
 }
 
-.schedule-table-responsive {
-  min-width: 600px;
-  width: 100%;
+.schedule-table-responsive { 
+  overflow-x: auto; 
 }
 
 .schedule-table {

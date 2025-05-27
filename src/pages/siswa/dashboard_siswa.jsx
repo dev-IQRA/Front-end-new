@@ -82,7 +82,12 @@ const DashboardSiswa = () => {
             </div>
           </div>
         </div>
-
+        <div className="calendar-widget">
+          <Calendar 
+            selectedDate={currentMonth}
+            onDateChange={(newDate) => setCurrentMonth(newDate)}
+          />
+        </div>
         {/* Course Review Section */}
         <div className="course-review-section">
           <div className="section-header">
@@ -110,13 +115,6 @@ const DashboardSiswa = () => {
       <aside className="dashboard-sidebar">
         <div className="user-profile">
           <UserInfo username="Username" nim="NIS" />
-        </div>
-
-        <div className="calendar-widget">
-          <Calendar 
-            selectedDate={currentMonth}
-            onDateChange={(newDate) => setCurrentMonth(newDate)}
-          />
         </div>
       </aside>
     </div>
