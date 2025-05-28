@@ -1,15 +1,11 @@
 "use client"
 
-import React, { useContext } from "react"
+import React from "react"
 import Sidebar from "../../component/sidebar/sidebar_admin.jsx"
-import UserInfo from "../../component/user-info/user-info.jsx"
 import Calender from "../../component/common/calender.jsx"
-import { UserContext } from "../../context/UserContext.jsx"
 import "./dashboard_admin.css"
 
 const DashboardAdmin = () => {
-  const { user } = useContext(UserContext)
-
   // Sample online users data
   const onlineUsers = [
     { username: "Brooklyn", nim: "102999" },
@@ -80,7 +76,6 @@ const DashboardAdmin = () => {
       <aside className="dashboard-sidebar">
         <div className="search-container">
           <input type="text" placeholder="Search" className="search-input" />
-          <UserInfo username={user?.username || "Username"} nim={user?.nim || "NIS"} />
         </div>
 
         <div className="calendar-widget">
