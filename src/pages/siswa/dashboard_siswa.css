@@ -8,55 +8,37 @@
   overflow-x: hidden;
 }
 
-/* PERBAIKAN UTAMA: Reset margin dan gunakan padding yang tepat */
 .dashboard-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
   box-sizing: border-box;
   min-height: 100vh;
   position: relative;
-  /* PERBAIKAN: Hapus margin-right berlebihan */
-  margin-right: 0;
-  max-width: 100%;
-  /* Tambah padding kanan hanya jika sidebar benar-benar ada */
-  padding-right: 32px;
+  flex-grow: 1;
 }
 
-/* PERBAIKAN: Sidebar positioning yang lebih fleksibel */
-.dashboard-sidebar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 270px;
-  height: 100vh;
-  background: #b22222;
-  z-index: 100;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  /* Tambah kondisi untuk menyembunyikan jika tidak diperlukan */
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-}
 
-/* Class untuk menampilkan sidebar */
 .dashboard-sidebar.active {
   transform: translateX(0);
 }
 
-/* Ketika sidebar aktif, beri ruang untuk konten */
-.dashboard-container.has-sidebar .dashboard-content {
-  margin-right: 270px;
-  max-width: calc(100% - 270px);
+.dashboard-sidebar {
+  display: none;
 }
 
-/* PERBAIKAN: Batasi lebar maksimal semua section dengan kontainer */
+.dashboard-container.has-sidebar .dashboard-content {
+  margin-right: 0;
+  max-width: 100%;
+}
+
 .content-wrapper {
   width: 100%;
-  max-width: 1200px; /* Batasi lebar maksimal untuk readability */
+  max-width: 1200px; 
   margin: 0 auto;
 }
 
@@ -379,7 +361,6 @@
   visibility: hidden;
 }
 
-/* PERBAIKAN: User info positioning yang dinamis */
 .user-info {
   position: fixed;
   top: 32px;
