@@ -1,22 +1,26 @@
 "use client"
 
+import React, { useContext } from "react"
 import Sidebar from "../../component/sidebar/sidebar_admin.jsx"
 import UserInfo from "../../component/user-info/user-info.jsx"
 import Calender from "../../component/common/calender.jsx"
+import { UserContext } from "../../context/UserContext.jsx"
 import "./dashboard_admin.css"
 
 const DashboardAdmin = () => {
+  const { user } = useContext(UserContext)
+
   // Sample online users data
   const onlineUsers = [
-    { username: "Username", nim: "NIM" },
-    { username: "Username", nim: "NIM" },
-    { username: "Username", nim: "NIM" },
-    { username: "Username", nim: "NIM" },
-    { username: "Username", nim: "NIM" },
-    { username: "Username", nim: "NIM" },
-    { username: "Username", nim: "NIM" },
-    { username: "Username", nim: "NIM" },
-    { username: "Username", nim: "NIM" },
+    { username: "Brooklyn", nim: "102999" },
+    { username: "Dea", nim: "23001" },
+    { username: "Jesslyn", nim: "30000" },
+    { username: "Michael", nim: "30001" },
+    { username: "Sophia", nim: "30002" },
+    { username: "Liam", nim: "30003" },
+    { username: "Olivia", nim: "30004" },
+    { username: "Noah", nim: "30005" },
+    { username: "Emma", nim: "30006" },
   ]
 
   // Sample announcement text
@@ -76,7 +80,7 @@ const DashboardAdmin = () => {
       <aside className="dashboard-sidebar">
         <div className="search-container">
           <input type="text" placeholder="Search" className="search-input" />
-          <UserInfo username="Username" nim="NIS" />
+          <UserInfo username={user?.username || "Username"} nim={user?.nim || "NIS"} />
         </div>
 
         <div className="calendar-widget">
@@ -88,7 +92,7 @@ const DashboardAdmin = () => {
           <ul className="online-users-list">
             {onlineUsers.map((user, index) => (
               <li key={index} className="online-user-item">
-                <div className="user-avatar"></div>
+                <div className="user-avatar">{user.username.charAt(0)}</div>
                 <div className="user-info">
                   <div className="username">{user.username}</div>
                   <div className="nim">{user.nim}</div>
