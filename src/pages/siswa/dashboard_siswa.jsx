@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Search } from "lucide-react"
 import Sidebar from "../../component/sidebar/sidebar_siswa.jsx"
 import Calendar from "../../component/common/calender.jsx";
-import UserInfo from "../../component/user-info/user-info.jsx"
 import "./dashboard_siswa.css"
 
 const DashboardSiswa = () => {
@@ -111,12 +110,6 @@ const DashboardSiswa = () => {
           </div>
         </div>
       </main>
-
-      <aside className="dashboard-sidebar">
-        <div className="user-profile">
-          <UserInfo username="Username" nim="NIS" />
-        </div>
-      </aside>
     </div>
   )
 }
