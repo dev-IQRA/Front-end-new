@@ -6,15 +6,16 @@ const KelolaAkunAdmin = () => {
   const [activeMenuIndex, setActiveMenuIndex] = useState(null);
   const [editIndex, setEditIndex] = useState(null);
   const [editStatus, setEditStatus] = useState('');
-
-  const accounts = [
+  
+  // Changed to useState to make accounts editable
+  const [accounts, setAccounts] = useState([
     { id: '102999', username: 'Brooklyn', status: 'Non Aktif', timestamp: '13 min' },
     { id: '23001', username: 'Dea', status: 'Non Aktif', timestamp: '2 month ago' },
     { id: '30000', username: 'Jesslyn', status: 'Aktif', timestamp: '13 min' },
     { id: '30000', username: 'Jesslyn', status: 'Aktif', timestamp: '13 min' },
     { id: '30000', username: 'Jesslyn', status: 'Aktif', timestamp: '13 min' },
     { id: '30000', username: 'Jesslyn', status: 'Aktif', timestamp: '13 min' },
-  ];
+  ]);
 
   const toggleMenu = (index) => {
     if (activeMenuIndex === index) {
@@ -44,10 +45,41 @@ const KelolaAkunAdmin = () => {
   };
 
   const handleDone = () => {
-    // Here you would normally update the data source or call an API
-    // For now, just close the edit form
+    // Update the account status
+    const updatedAccounts = [...accounts];
+    updatedAccounts[editIndex].status = editStatus;
+    setAccounts(updatedAccounts);
+    
+    // Close the edit form
     setEditIndex(null);
     setEditStatus('');
+  };
+
+  // New delete function
+  const handleDelete = (index) => {
+    const accountToDelete = accounts[index];
+    const isConfirmed = window.confirm(`Are you sure you want to delete user "${accountToDelete.username}"?`);
+    
+    if (isConfirmed) {
+      const updatedAccounts = accounts.filter((_, accountIndex) => accountIndex !== index);
+      setAccounts(updatedAccounts);
+      setActiveMenuIndex(null); // Close the menu after deletion
+      
+      // If we were editing the deleted account, close the edit form
+      if (editIndex === index) {
+        setEditIndex(null);
+        setEditStatus('');
+      }
+      // If we were editing an account after the deleted one, adjust the index
+      else if (editIndex > index) {
+        setEditIndex(editIndex - 1);
+      }
+    }
+  };
+
+  const handleUpdate = (index) => {
+    setActiveMenuIndex(null); // Close the menu
+    handleUsernameClick(index); // Open the edit form
   };
 
   return (
@@ -56,10 +88,6 @@ const KelolaAkunAdmin = () => {
       <div className="kelolaakun-content" style={{ overflowX: 'visible' }}>
         <header className="kelolaakun-header">
           <h2>Kelola Akun</h2>
-          <div className="user-info">
-            <span>Username</span>
-            <div className="user-circle">NIS</div>
-          </div>
         </header>
         <table className="kelolaakun-table">
           <thead>
@@ -73,7 +101,7 @@ const KelolaAkunAdmin = () => {
           </thead>
           <tbody>
             {accounts.map((account, index) => (
-              <React.Fragment key={index}>
+              <React.Fragment key={`${account.id}-${index}`}>
                 <tr>
                   <td style={{ minWidth: '100px' }}>{account.id}</td>
                   <td style={{ minWidth: '150px' }}>
@@ -87,8 +115,8 @@ const KelolaAkunAdmin = () => {
                     <button className="action-button" onClick={() => toggleMenu(index)}>⋮</button>
                     {activeMenuIndex === index && (
                       <div className="action-menu" style={{ right: 'auto', left: '-110px', zIndex: 9999 }}>
-                        <button className="action-menu-item" onClick={() => alert(`Update ${account.username}`)}>Update</button>
-                        <button className="action-menu-item" onClick={() => alert(`Delete ${account.username}`)}>Delete</button>
+                        <button className="action-menu-item" onClick={() => handleUpdate(index)}>Update</button>
+                        <button className="action-menu-item" onClick={() => handleDelete(index)}>Delete</button>
                       </div>
                     )}
                   </td>

@@ -19,7 +19,6 @@
 
 .kelolaakun-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
 }
@@ -28,28 +27,6 @@
   color: #2f4f4f;
   font-weight: 700;
   font-size: 1.8rem;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: #a0522d;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.user-circle {
-  width: 30px;
-  height: 30px;
-  background-color: #f4a261;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: 700;
-  font-size: 0.9rem;
 }
 
 .kelolaakun-table {
@@ -157,6 +134,103 @@
   color: #b22222;
 }
 
+/* Edit form styles */
+.edit-row {
+  background-color: #f8f9fa !important;
+}
+
+.edit-form {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+
+.edit-form em {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2f4f4f;
+  margin-bottom: 1rem;
+}
+
+.edit-form table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.edit-form table td {
+  padding: 0.5rem 0;
+  border: none;
+  background: none !important;
+}
+
+.edit-form table td:first-child {
+  font-weight: 600;
+  color: #2f4f4f;
+  width: 100px;
+  padding-right: 1rem;
+}
+
+.status-button {
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  padding: 0.375rem 0.75rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.status-button:hover {
+  background-color: #dee2e6;
+}
+
+.status-button.active {
+  background-color: #8b2d0e;
+  color: white;
+  border-color: #8b2d0e;
+}
+
+.edit-form-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+}
+
+.done-button {
+  background-color: #8b2d0e;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.done-button:hover {
+  background-color: #7a260c;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .kelolaakun-admin-container {
@@ -193,3 +267,13 @@
     overflow: visible;
     text-overflow: clip;
   }
+
+  .edit-form-buttons {
+    flex-direction: column;
+  }
+
+  .cancel-button,
+  .done-button {
+    width: 100%;
+  }
+}
