@@ -1,12 +1,9 @@
-"use client"
-
 import React from "react"
 import Sidebar from "../../component/sidebar/sidebar_admin.jsx"
 import Calender from "../../component/common/calender.jsx"
 import "./dashboard_admin.css"
 
 const DashboardAdmin = () => {
-  // Sample online users data
   const onlineUsers = [
     { username: "Brooklyn", nim: "102999" },
     { username: "Dea", nim: "23001" },
@@ -72,30 +69,36 @@ const DashboardAdmin = () => {
           </div>
         </div>
       </main>
-
+      
       <aside className="dashboard-sidebar">
         <div className="search-container">
-          <input type="text" placeholder="Search" className="search-input" />
+          <input 
+            type="text" 
+            placeholder="Search" 
+            className="search-input" 
+            />
         </div>
 
         <div className="calendar-widget">
-          <Calender />
+            <Calender />
         </div>
 
         <div className="online-users-widget">
           <h3>Online User</h3>
-          <ul className="online-users-list">
-            {onlineUsers.map((user, index) => (
-              <li key={index} className="online-user-item">
-                <div className="user-avatar">{user.username.charAt(0)}</div>
-                <div className="user-info">
-                  <div className="username">{user.username}</div>
-                  <div className="nim">{user.nim}</div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+              <ul className="online-users-list">
+                {onlineUsers.map((user, index) => (
+                  <li key={index} className="online-user-item">
+                    <div className="user-avatar">
+                      {user.username.charAt(0).toUpperCase()}
+                    </div>
+                    <div className="user-info">
+                      <div className="username">{user.username}</div>
+                      <div className="nim">{user.nim}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+          </div>
       </aside>
     </div>
   )
