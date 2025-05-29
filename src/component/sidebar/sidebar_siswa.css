@@ -1,4 +1,4 @@
-/* Add this to your sidebar_siswa.css file */
+/* Complete revised sidebar_siswa.css */
 
 .sidebar {
   width: 250px;
@@ -10,6 +10,9 @@
   top: 0;
   transition: all 0.3s ease;
   z-index: 100;
+  /* Flexbox untuk struktur layout dengan footer di bawah */
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar.closed {
@@ -19,6 +22,8 @@
 .sidebar-header {
   padding: 1.5rem 1.5rem 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Header tetap di atas */
+  flex-shrink: 0;
 }
 
 .sidebar-title {
@@ -28,6 +33,9 @@
 
 .sidebar-nav {
   padding: 1rem 0;
+  /* Nav mengambil sisa ruang dan bisa scroll jika diperlukan */
+  flex: 1;
+  overflow-y: auto;
 }
 
 .sidebar-menu {
@@ -104,6 +112,45 @@
   margin-left: 0.75rem;
 }
 
+/* Sidebar Footer untuk Logout Button */
+.sidebar-footer {
+  margin-top: auto;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  /* Footer tetap di bawah */
+  flex-shrink: 0;
+}
+
+.logout-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(2px);
+}
+
+.logout-button:active {
+  transform: translateX(0);
+}
+
+.logout-button span {
+  margin-left: 0;
+}
+
 /* Mobile styles */
 .sidebar-toggle {
   position: fixed;
@@ -131,8 +178,55 @@
   z-index: 90;
 }
 
+/* Responsive untuk tablet dan mobile */
+@media screen and (max-width: 1024px) {
+  .sidebar-footer {
+    padding: 0.75rem;
+  }
+  
+  .logout-button {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .sidebar-toggle {
     display: none;
   }
+}
+
+/* Animasi untuk transisi smooth */
+@media (prefers-reduced-motion: no-preference) {
+  .sidebar-menu-link,
+  .sidebar-submenu-link,
+  .logout-button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Focus states untuk accessibility */
+.sidebar-menu-link:focus,
+.sidebar-submenu-link:focus,
+.logout-button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling untuk sidebar-nav */
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }

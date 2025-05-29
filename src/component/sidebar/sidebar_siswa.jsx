@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import { NavLink } from "react-router-dom"
-import { Home, BookOpen, Calendar, FileText, ClipboardCheck, ChevronDown, ChevronRight, Menu, X } from "lucide-react"
+import { NavLink, useNavigate } from "react-router-dom"
+import { Home, BookOpen, Calendar, FileText, ClipboardCheck, ChevronDown, ChevronRight, Menu, X, LogOut } from "lucide-react"
 import "./sidebar_siswa.css"
 
 const Sidebar = () => {
@@ -9,6 +9,8 @@ const Sidebar = () => {
   const [expandedMenus, setExpandedMenus] = useState({
     academic: true // Set academic menu to be expanded by default
   })
+  
+  const navigate = useNavigate()
 
   // Check if screen is mobile size
   useEffect(() => {
@@ -44,6 +46,18 @@ const Sidebar = () => {
     }))
   }
 
+  const handleLogout = () => {
+    // Tambahkan logika logout di sini - sama seperti di sidebar guru
+    if (window.confirm("Apakah Anda yakin ingin logout?")) {
+      // Clear localStorage/sessionStorage jika ada
+      localStorage.removeItem("token")
+      localStorage.removeItem("user")
+      
+      // Redirect ke halaman login
+      navigate("/login")
+    }
+  }
+
   return (
     <>
       {/* Mobile toggle button */}
@@ -53,8 +67,8 @@ const Sidebar = () => {
         </button>
       )}
 
-      {/* Sidebar */}
-      <aside className={`sidebar ${isOpen ? "open" : "closed"}`}>
+      {/* Sidebar - menggunakan struktur yang sama dengan sidebar_guru */}
+      <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
         <div className="sidebar-header">
           <h1 className="sidebar-title">IQRAStudent</h1>
         </div>
@@ -121,9 +135,16 @@ const Sidebar = () => {
             </li>
           </ul>
         </nav>
-      </aside>
 
-      {/* Overlay for mobile */}
+        {/* Footer dengan logout button - sama seperti sidebar_guru */}
+        <div className="sidebar-footer">
+          <button className="logout-button" onClick={handleLogout}>
+            <LogOut size={20} />
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+
       {isMobile && isOpen && <div className="sidebar-overlay" onClick={toggleSidebar}></div>}
     </>
   )
