@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
+import axiosInstance from "../../utils/axiosInstance";
 import "./login-page.css";
 
 const LoginPage = () => {
@@ -15,27 +16,25 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    
-    const users = {
-      siswa: {username: "siswa", password: "siswa123", role: "siswa"},
-      guru: {username: "guru", password: "guru123", role: "guru"},
-      admin: {username: "admin", password: "admin123", role: "admin"},
-    };
 
-    const user = Object.values(users).find(
-      user => user.username === username && user.password === password
-    );
-
-    if(user) {
+    try {
+      const response = await axiosInstance.post("/api/auth/login", {
+        username,
+        password,
+      });
+      const user = response.data.user;
       setUser(user);
 
-      if(rememberMe) {
+      if (rememberMe) {
         localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("userRole", user.role);
         localStorage.setItem("username", user.username);
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+        }
       }
 
-      switch(user.role) {
+      switch (user.role) {
         case "siswa":
           navigate("/siswa/dashboard");
           break;
@@ -48,8 +47,10 @@ const LoginPage = () => {
         default:
           navigate("/login");
       }
-    } else {
-      setError("Username atau password salah!");
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "Username atau password salah!"
+      );
     }
   };
 

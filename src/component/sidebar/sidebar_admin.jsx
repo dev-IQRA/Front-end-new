@@ -1,14 +1,18 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Home, User, LogOut, Menu, X } from "lucide-react"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import axiosInstance from "../../utils/axiosInstance";
+import { UserContext } from "../../context/UserContext";
 import "./sidebar_admin.css"
 
 const Sidebar = () => {
   const [isMobile, setIsMobile] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
   const location = useLocation()
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
   // Check if screen is mobile size
   useEffect(() => {
@@ -34,6 +38,18 @@ const Sidebar = () => {
   const toggleSidebar = () => {
     setIsOpen(!isOpen)
   }
+
+  const handleLogout = async () => {
+    try {
+      await axiosInstance.get("/api/auth/logout");
+    } catch (e) {}
+    localStorage.removeItem("token");
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("userRole");
+    localStorage.removeItem("username");
+    setUser(null);
+    navigate("/login");
+  };
 
   return (
     <>
@@ -69,7 +85,7 @@ const Sidebar = () => {
         </nav>
 
         <div className="sidebar-footer">
-          <button className="sidebar-logout">
+          <button className="sidebar-logout" onClick={handleLogout}>
             <LogOut size={20} />
             <span>Logout</span>
           </button>
