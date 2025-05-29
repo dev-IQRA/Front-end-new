@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import { Home, BookOpen, Calendar, FileText, ClipboardCheck, ChevronDown, ChevronRight, Menu, X, LogOut } from "lucide-react"
 import "./sidebar_siswa.css"
+import axiosInstance from "../../utils/axiosInstance";
+import { UserContext } from "../../context/UserContext";
 
 const Sidebar = () => {
   const [isMobile, setIsMobile] = useState(false)
@@ -11,6 +13,7 @@ const Sidebar = () => {
   })
   
   const navigate = useNavigate()
+  const { setUser } = useContext(UserContext);
 
   // Check if screen is mobile size
   useEffect(() => {
@@ -46,15 +49,17 @@ const Sidebar = () => {
     }))
   }
 
-  const handleLogout = () => {
-    // Tambahkan logika logout di sini - sama seperti di sidebar guru
+  const handleLogout = async () => {
     if (window.confirm("Apakah Anda yakin ingin logout?")) {
-      // Clear localStorage/sessionStorage jika ada
-      localStorage.removeItem("token")
-      localStorage.removeItem("user")
-      
-      // Redirect ke halaman login
-      navigate("/login")
+      try {
+        await axiosInstance.get("/api/auth/logout");
+      } catch (e) {}
+      localStorage.removeItem("token");
+      localStorage.removeItem("isAuthenticated");
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("username");
+      setUser(null);
+      navigate("/login");
     }
   }
 

@@ -1,13 +1,31 @@
 import { Link, useLocation } from "react-router-dom"
 import { Home, User, LogOut } from "lucide-react"
 import "./sidebar_guru.css"
+import axiosInstance from "../../utils/axiosInstance"
+import { useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { UserContext } from "../../context/UserContext"
 
 const Sidebar_guru = () => {
   const location = useLocation()
+  const navigate = useNavigate()
+  const { setUser } = useContext(UserContext)
 
   // Check if the current path matches the given path
   const isActive = (path) => {
     return location.pathname === path
+  }
+
+  const handleLogout = async () => {
+    try {
+      await axiosInstance.get("/api/auth/logout")
+    } catch (e) {}
+    localStorage.removeItem("token")
+    localStorage.removeItem("isAuthenticated")
+    localStorage.removeItem("userRole")
+    localStorage.removeItem("username")
+    setUser(null)
+    navigate("/login")
   }
 
   return (
@@ -34,7 +52,7 @@ const Sidebar_guru = () => {
       </nav>
 
       <div className="sidebar-footer">
-        <button className="logout-button">
+        <button className="logout-button" onClick={handleLogout}>
           <LogOut size={20} />
           <span>Logout</span>
         </button>
