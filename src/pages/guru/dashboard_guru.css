@@ -1,17 +1,25 @@
-/* Dashboard Guru Styles */
+/* Dashboard Guru Styles - Fixed Grid Layout */
+/* Reset dan base styles untuk memastikan tidak ada spacing berlebih */
+* {
+  box-sizing: border-box;
+}
+
 .dashboard-container {
   display: flex;
   min-height: 100vh;
   background-color: #f9f9d9; /* Light cream background */
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .dashboard-content {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  width: calc(100vw - 270px);
+  width: 100%; /* Gunakan 100% dari container */
   max-width: none;
   margin: 0;
+  box-sizing: border-box; /* Include padding dalam width calculation */
 }
 
 .dashboard-header {
@@ -40,13 +48,16 @@
   background-color: #ff9f43;
 }
 
+/* FIXED: Grid layout dengan 12 kolom sistem - full width */
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: repeat(12, 1fr); /* 12 kolom grid system */
   gap: 20px;
+  width: 100%; /* Pastikan menggunakan full width */
+  box-sizing: border-box;
 }
 
-/* Card Styles */
+/* Card Styles - full width utilization */
 .dashboard-card {
   background-color: white;
   border-radius: 15px;
@@ -56,9 +67,12 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 300px;
+  width: 100%; /* Ensure full width usage */
+  box-sizing: border-box;
 }
 
-/* Announcement Card */
+/* FIXED: Grid positioning yang konsisten */
+/* Announcement Card - 8 kolom dari 12 */
 .announcement-card {
   grid-column: span 8;
 }
@@ -74,7 +88,7 @@
   line-height: 1.6;
 }
 
-/* Calendar Card */
+/* Calendar Card - 4 kolom dari 12 */
 .calendar-card {
   grid-column: span 4;
 }
@@ -104,9 +118,9 @@
   font-size: 1.2rem;
 }
 
-/* Attendance Card */
+/* Attendance Card - 6 kolom dari 12 */
 .attendance-card {
-   grid-column: span 6;
+  grid-column: span 6;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -163,13 +177,12 @@
   margin: 0;
 }
 
-
 .attendance-percentage p {
   color: #666;
   margin: 5px 0 0 0;
 }
 
-/* Classes Card */
+/* Classes Card - 6 kolom dari 12 */
 .classes-card {
   grid-column: span 6;
 }
@@ -236,14 +249,13 @@
   cursor: pointer;
   font-size: 0.9rem;
   transition: background-color 0.2s;
-  cursor: pointer;
 }
 
 .presence-btn:hover {
   background-color: #1e4b53;
 }
 
-/* Courses Section */
+/* Courses Section - Full width 12 kolom */
 .courses-section {
   grid-column: span 12;
 }
@@ -316,29 +328,6 @@
 
 .course-image::before {
   content: attr(alt);
-  color: #7a2a00;
-  font-weight: 500;
-  font-size: 1.1rem;
-  position: absolute;
-  top: 12px;
-  left: 18px;
-  z-index: 2;
-  text-shadow: none;
-}
-
-
-
-.course-name {
-  color: #b63a0b;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0 0 4px 0;
-}
-
-
-
-.course-image::before {
-  content: attr(alt);
   color: #fff;
   font-weight: 500;
   font-size: 1.1rem;
@@ -349,34 +338,21 @@
   text-shadow: 0 1px 2px rgba(0,0,0,0.08);
 }
 
-/* Specific gradient backgrounds for each course box by nth-child */
-
+/* Specific gradient backgrounds for each course box */
 .courses-grid > .course-card:nth-child(1) .course-image {
-  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Sejarah */
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%);
 }
 
 .courses-grid > .course-card:nth-child(2) .course-image {
-  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Indonesia */
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%);
 }
 
 .courses-grid > .course-card:nth-child(3) .course-image {
-  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* English */
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%);
 }
 
 .courses-grid > .course-card:nth-child(4) .course-image {
-  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Matematika */
-}
-
-.courses-grid > .course-card:nth-child(5) .course-image {
-  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Fisika */
-}
-
-.courses-grid > .course-card:nth-child(6) .course-image {
-  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Kimia */
-}
-
-.courses-grid > .course-card:nth-child(7) .course-image {
-  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%); /* Biologi */
+  background: linear-gradient(180deg, #a63d00 0%, #f18f5a 100%);
 }
 
 .course-info {
@@ -395,34 +371,57 @@
   margin-bottom: 6px;
 }
 
+.course-name {
+  color: #b63a0b;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
 .course-students {
   margin: 0;
   font-size: 0.95rem;
   color: #444;
 }
 
-/* Responsive Styles */
+/* FIXED: Responsive Styles dengan grid yang konsisten */
 @media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(12, 1fr); /* Tetap 12 kolom */
+  }
+  
   .announcement-card {
-    grid-column: span 12;
+    grid-column: span 12; /* Full width */
   }
 
   .calendar-card {
-    grid-column: span 12;
+    grid-column: span 12; /* Full width */
   }
 
   .attendance-card {
-    grid-column: span 12;
+    grid-column: span 6; /* Half width */
   }
 
   .classes-card {
-    grid-column: span 12;
+    grid-column: span 6; /* Half width */
   }
 }
 
 @media (max-width: 768px) {
   .dashboard-container {
     flex-direction: column;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* Single column pada mobile */
+  }
+  
+  .announcement-card,
+  .calendar-card,
+  .attendance-card,
+  .classes-card,
+  .courses-section {
+    grid-column: span 1; /* Full width pada mobile */
   }
 
   .courses-grid {
