@@ -1,16 +1,49 @@
 /* Nilai Siswa Styles */
+/* Reset overflow-x on body and html */
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .dashboard-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 270px auto;
   min-height: 100vh;
   background-color: #f8f8d9; /* Light yellow/cream background */
-  padding-left: 270px; /* Add padding equal to sidebar width */
-  transition: padding-left 0.3s ease;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Sidebar fixed position */
+.component-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 100vh;
+  z-index: 1000;
+  grid-column: 1 / 2;
+}
+
+/* Dashboard content without margin-left, fills second column */
+.dashboard-content {
+  padding: 2rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+  grid-column: 2 / 3;
+  width: 100%;
+  max-width: 100%;
 }
 
 .dashboard-content {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
+  box-sizing: border-box;
+  max-width: calc(100vw - 270px);
 }
 
 /* Page Header */
