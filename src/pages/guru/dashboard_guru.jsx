@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Sidebar_guru from "../../component/sidebar/sidebar_guru"
+import UserInfo from "../../component/user-info/user-info"
 import "./dashboard_guru.css"
 import Calendar from "../../component/common/calender.jsx"; // Sesuaikan dengan nama file yang benar
 
@@ -60,11 +61,7 @@ const DashboardGuru = () => {
 
       <div className="dashboard-content">
         <div className="dashboard-header">
-          <div className="user-info">
-            <span>Username</span>
-            <span className="nip">NIP</span>
-            <div className="user-avatar"></div>
-          </div>
+          <UserInfo username="Username" profileInitial="U" />
         </div>
 
         <div className="dashboard-grid">
