@@ -16,7 +16,7 @@
 
 .dashboard-content {
   flex: 1;
-  padding: 20px 20px 20px 270px; /* Ganti margin-left dengan padding-left */
+  padding: 20px 100px 20px 270px; /* Tambah padding kanan lebih besar untuk mengurangi space kosong di kanan */
   overflow-y: auto;
   max-width: 1200px; /* Perbaiki max-width ke nilai yang wajar */
   box-sizing: border-box;
@@ -34,6 +34,20 @@
   gap: 10px;
   color: #b22500;
   font-weight: 500;
+  position: relative; /* Tambahkan posisi relatif untuk pengaturan posisi anak */
+  z-index: 10; /* Pastikan berada di atas elemen lain */
+}
+
+.user-info .username-tooltip {
+  position: absolute;
+  top: 50px; /* Sesuaikan jarak vertikal dari avatar */
+  right: 0;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  white-space: nowrap;
+  z-index: 20;
 }
 
 .nip {
@@ -51,7 +65,7 @@
 /* FIXED: Grid layout dengan proporsi yang lebih baik */
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* 2 kolom: kiri lebih besar, kanan lebih kecil */
+  grid-template-columns: 1fr 1fr; /* 2 kolom: kiri dan kanan sama besar */
   grid-template-rows: auto auto auto; /* 3 baris dengan tinggi otomatis */
   gap: 20px;
   max-width: 1400px; /* Batasi lebar maksimum */
@@ -126,7 +140,8 @@
   display: flex;
   flex-direction: column;
   min-height: 350px;
-  max-height: 400px;
+  max-height: none;
+  overflow-y: auto;
 }
 
 .calendar-header {
