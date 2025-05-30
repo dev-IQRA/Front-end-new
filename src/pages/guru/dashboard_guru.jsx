@@ -78,20 +78,13 @@ const DashboardGuru = () => {
             </div>
           </div>
 
-          {/* Calendar Section */}
-          <div className="dashboard-card calendar-card">
-            <div className="calendar-header">
-              <h2>{formatMonthYear(currentMonth)}</h2>
-              <div className="calendar-nav">
-                <button onClick={prevMonth} className="calendar-nav-btn">
-                  &lt;
-                </button>
-                <button onClick={nextMonth} className="calendar-nav-btn">
-                  &gt;
-                </button>
-              </div>
-            </div>
-            <Calendar currentMonth={currentMonth} />
+          {/* Calendar Section - FIXED: Let Calendar component handle its own header */}
+          <div className="calendar-section">
+            <Calendar 
+              currentMonth={currentMonth}
+              onPrevMonth={prevMonth}
+              onNextMonth={nextMonth}
+            />
           </div>
 
           {/* Attendance Section */}
