@@ -30,7 +30,21 @@ import KelolaAkunAdmin from "../pages/admin/kelolaakun_admin";
 
 // Komponen PrivateRoute untuk proteksi route
 const PrivateRoute = ({ children, allowedRoles }) => {
-  const { user } = useContext(UserContext);
+  const { user, loading } = useContext(UserContext);
+
+  if (loading) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        fontSize: '18px'
+      }}>
+        Loading...
+      </div>
+    );
+  }
 
   if (!user) {
     // Jika belum login, redirect ke login
@@ -56,10 +70,46 @@ const PrivateRoute = ({ children, allowedRoles }) => {
 };
 
 const AppRoutes = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <Routes>
       {/* Route Publik */}
-      <Route path="/login" element={<Login />} />
+      <Route 
+        path="/login" 
+        element={
+          user ? (
+            // Jika sudah login, redirect ke dashboard sesuai role
+            <Navigate 
+              to={
+                user.role === "siswa" ? "/siswa/dashboard" :
+                user.role === "guru" ? "/guru/dashboard" :
+                user.role === "admin" ? "/admin/dashboard" : "/login"
+              } 
+              replace 
+            />
+          ) : (
+            <Login />
+          )
+        } 
+      />
+
+      {/* Redirect root ke login jika belum login, atau ke dashboard jika sudah login */}
+      <Route 
+        path="/" 
+        element={
+          <Navigate 
+            to={
+              user ? (
+                user.role === "siswa" ? "/siswa/dashboard" :
+                user.role === "guru" ? "/guru/dashboard" :
+                user.role === "admin" ? "/admin/dashboard" : "/login"
+              ) : "/login"
+            } 
+            replace 
+          />
+        } 
+      />
 
 
       {/* Route Siswa */}

@@ -15,17 +15,26 @@ const Sidebar_guru = () => {
   const isActive = (path) => {
     return location.pathname === path
   }
-
   const handleLogout = async () => {
-    try {
-      await axiosInstance.get("/api/auth/logout")
-    } catch (e) {}
-    localStorage.removeItem("token")
-    localStorage.removeItem("isAuthenticated")
-    localStorage.removeItem("userRole")
-    localStorage.removeItem("username")
-    setUser(null)
-    navigate("/login")
+    if (window.confirm("Apakah Anda yakin ingin logout?")) {
+      try {
+        await axiosInstance.get("/api/auth/logout");
+      } catch (error) {
+        console.log("Logout request failed:", error);
+      }
+      
+      // Clear localStorage
+      localStorage.removeItem("token");
+      localStorage.removeItem("isAuthenticated");
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("username");
+      
+      // Clear user context
+      setUser(null);
+      
+      // Navigate to login
+      navigate("/login");
+    }
   }
 
   return (

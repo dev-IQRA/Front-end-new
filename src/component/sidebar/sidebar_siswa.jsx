@@ -48,17 +48,24 @@ const Sidebar = () => {
       [menu]: !prev[menu]
     }))
   }
-
   const handleLogout = async () => {
     if (window.confirm("Apakah Anda yakin ingin logout?")) {
       try {
         await axiosInstance.get("/api/auth/logout");
-      } catch (e) {}
+      } catch (error) {
+        console.log("Logout request failed:", error);
+      }
+      
+      // Clear localStorage
       localStorage.removeItem("token");
       localStorage.removeItem("isAuthenticated");
       localStorage.removeItem("userRole");
       localStorage.removeItem("username");
+      
+      // Clear user context
       setUser(null);
+      
+      // Navigate to login
       navigate("/login");
     }
   }
