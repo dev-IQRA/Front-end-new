@@ -152,51 +152,69 @@ html, body {
 .schedule-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 0;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-bottom: 8px;
+  border: 1px solid #e0e0e0;
 }
 
 .schedule-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 0.875rem;
   color: #666;
-  width: 50px;
+  width: 70px;
   flex-shrink: 0;
+}
+
+.time-start {
+  font-weight: 600;
+  color: #333;
+}
+
+.time-separator {
+  margin: 2px 0;
+  color: #999;
+  font-size: 0.75rem;
+}
+
+.time-end {
+  font-weight: 500;
+  color: #666;
 }
 
 .schedule-details {
   flex: 1;
-  min-width: 0;
+  margin-left: 12px;
 }
 
 .schedule-subject {
-  font-weight: 500;
-  color: #b22222; 
-  margin-bottom: 0.25rem;
-  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2px;
 }
 
 .schedule-code {
-  font-size: 0.75rem;
-  color: #888;
+  font-size: 12px;
+  color: #666;
 }
 
 .presence-btn {
-  padding: 0.5rem 1rem;
-  border-radius: 1.5rem;
-  border: none;
-  background-color: #4a9b8e;
+  background-color: #27ae60;
   color: white;
-  font-size: 0.875rem;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-  min-width: 75px;
-  text-align: center;
+  transition: background-color 0.2s;
 }
 
 .presence-btn:hover {
-  background-color: #3d8b7e;
-  transform: translateY(-1px);
+  background-color: #229954;
 }
 
 /* Course Review Section */
@@ -413,6 +431,39 @@ html, body {
   font-size: 0.875rem;
   color: #333;
   font-weight: 500;
+}
+
+/* Loading and Error States */
+.loading-text {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+  font-style: italic;
+}
+
+.error-text {
+  text-align: center;
+  color: #e74c3c;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.no-schedule {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+}
+
+.no-schedule p {
+  margin: 0;
+  font-style: italic;
+}
+
+/* Schedule Teacher Info */
+.schedule-teacher {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
 }
 
 /* RESPONSIVE BREAKPOINTS */
