@@ -227,7 +227,7 @@ const CourseReview = ({ jadwalData, loading, error }) => {
           {uniqueCourses.length > 0 ? (
             uniqueCourses.map((course, index) => (
               <CourseCard 
-                key={index}
+                key={course.code}
                 code={course.code} 
                 name={course.name} 
               />
