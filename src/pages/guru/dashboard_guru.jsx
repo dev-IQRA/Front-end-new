@@ -1,14 +1,20 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useContext } from "react"
 import Sidebar_guru from "../../component/sidebar/sidebar_guru"
 import UserInfo from "../../component/user-info/user-info"
 import "./dashboard_guru.css"
-import Calendar from "../../component/common/calender.jsx"; // Sesuaikan dengan nama file yang benar
+import Calendar from "../../component/common/calender.jsx"
+import { UserContext } from "../../context/UserContext"
+import axiosInstance from "../../utils/axiosInstance"
 
 const DashboardGuru = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date())
-
+  const [jadwalHariIni, setJadwalHariIni] = useState([])
+  const [mapelGuru, setMapelGuru] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState("")
+  const { user } = useContext(UserContext)
   // Sample data for announcements
   const announcements = [
     {
@@ -16,13 +22,6 @@ const DashboardGuru = () => {
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean placerat magna quis eros consequat porttitor. Morbi tempus sapien ac dui gravida, tempus pharetra magna interdum. Mauris justo elit, faucibus ut orci placerat, sagittis viverra nulla. Donec dictum consequat dui hendrerit condimentum. Nulla sagittis nisl est. Donec eget feugiat est. Donec non dictum quam. Donec sagittis fermentum.",
     },
-  ]
-
-  // Sample data for classes
-  const todayClasses = [
-    { id: 1, time: "07:00", endTime: "08:30", subject: "Matematika", code: "MAT120D", room: "R301" },
-    { id: 2, time: "09:00", endTime: "10:30", subject: "Bahasa Indonesia", code: "IND120G", room: "R204" },
-    { id: 3, time: "13:00", endTime: "14:30", subject: "Fisika", code: "FIS120E", room: "R105" },
   ]
 
   // Sample data for attendance statistics
@@ -33,13 +32,32 @@ const DashboardGuru = () => {
     attendedClasses: 24,
   }
 
-  // Sample data for courses
-  const courses = [
-    { id: 1, code: "MAT120D", name: "Matematika", students: 32, color: "#e67e22" },
-    { id: 2, code: "KIM120E", name: "Kimia", students: 28, color: "#e67e22" },
-    { id: 3, code: "BIO120E", name: "Biologi", students: 30, color: "#e67e22" },
-    { id: 4, code: "FIS120E", name: "Fisika", students: 26, color: "#e67e22" },
-  ]
+  // Fetch data from backend
+  useEffect(() => {
+    const fetchGuruData = async () => {
+      try {
+        setLoading(true)
+        
+        // Fetch jadwal hari ini untuk guru
+        const responseHariIni = await axiosInstance.get("/api/jadwal/guru/hari-ini")
+        setJadwalHariIni(responseHariIni.data.jadwal || [])
+
+        // Fetch mata pelajaran yang diajar guru
+        const responseMapel = await axiosInstance.get("/api/jadwal/guru/mapel")
+        setMapelGuru(responseMapel.data.mapel || [])
+
+      } catch (error) {
+        console.error("Error fetching guru data:", error)
+        setError("Gagal memuat data. Pastikan Anda login sebagai guru.")
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    if (user && user.role === 'guru') {
+      fetchGuruData()
+    }
+  }, [user])
 
   // Navigation for calendar
   const prevMonth = () => {
@@ -59,9 +77,8 @@ const DashboardGuru = () => {
     <div className="dashboard-container">
       <Sidebar_guru />
 
-      <div className="dashboard-content">
-        <div className="dashboard-header">
-          <UserInfo username="Username" profileInitial="U" />
+      <div className="dashboard-content">        <div className="dashboard-header">
+          <UserInfo />
         </div>
 
         <div className="dashboard-grid">
@@ -97,33 +114,37 @@ const DashboardGuru = () => {
                 <p>Rata-rata kehadiran</p>
               </div>
             </div>
-          </div>
-
-          {/* Today's Classes Section */}
+          </div>          {/* Today's Classes Section */}
           <div className="dashboard-card classes-card">
             <h2>Jadwal Mengajar Hari Ini</h2>
             <div className="classes-content">
-              {todayClasses.map((cls) => (
-                <div key={cls.id} className="class-item">
-                  <div className="class-time">
-                    <span>{cls.time}</span>
-                    <span className="time-separator">-</span>
-                    <span>{cls.endTime}</span>
+              {loading ? (
+                <div className="loading-text">Memuat jadwal...</div>
+              ) : error ? (
+                <div className="error-text">{error}</div>
+              ) : jadwalHariIni.length > 0 ? (
+                jadwalHariIni.map((jadwal) => (
+                  <div key={jadwal.id} className="class-item">
+                    <div className="class-time">
+                      <span>{jadwal.jam_mulai}</span>
+                      <span className="time-separator">-</span>
+                      <span>{jadwal.jam_selesai}</span>
+                    </div>
+                    <div className="class-info">
+                      <h4>{jadwal.mapel.nama_mapel}</h4>
+                      <p>{jadwal.mapel.id}</p>
+                    </div>
+                    <div className="class-room">
+                      <span>{jadwal.kelas.nama_kelas}</span>
+                    </div>
+                    <button className="presence-btn">Presensi</button>
                   </div>
-                  <div className="class-info">
-                    <h4>{cls.subject}</h4>
-                    <p>{cls.code}</p>
-                  </div>
-                  <div className="class-room">
-                    <span>{cls.room}</span>
-                  </div>
-                  <button className="presence-btn">Presensi</button>
-                </div>
-              ))}
+                ))
+              ) : (
+                <div className="no-schedule">Tidak ada jadwal mengajar hari ini</div>
+              )}
             </div>
-          </div>
-
-          {/* Courses Section */}
+          </div>          {/* Courses Section */}
           <div className="dashboard-card courses-section">
             <div className="courses-header">
               <h2>Course Review</h2>
@@ -131,18 +152,24 @@ const DashboardGuru = () => {
                 <input type="text" placeholder="Search" className="search-input" />
                 <button className="search-btn">Search</button>
               </div>
-            </div>
-            <div className="courses-grid">
-              {courses.map((course) => (
-                <div key={course.id} className="course-card">
-                  <div className="course-image"></div>
-                  <div className="course-info">
-                      <p className="course-code">{course.code}</p>
+            </div>            <div className="courses-grid">
+              {loading ? (
+                <div className="loading-text">Memuat mata pelajaran...</div>
+              ) : error ? (
+                <div className="error-text">{error}</div>
+              ) : mapelGuru.length > 0 ? (                mapelGuru.map((course) => (
+                  <div key={course.id} className="course-card">
+                    <div className="course-image" style={{ backgroundColor: course.color || "#e67e22" }}></div>
+                    <div className="course-info">
+                      <p className="course-code">{course.id}</p>
                       <h3 className="course-name">{course.name}</h3>
-                      <p className="course-students">{course.students} siswa</p>
-                </div>
-              </div>
-              ))}
+                      <p className="course-description">{course.description}</p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="no-courses">Tidak ada mata pelajaran yang diajar</div>
+              )}
             </div>
           </div>
         </div>

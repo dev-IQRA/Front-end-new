@@ -435,10 +435,53 @@
   line-height: 1.3;
 }
 
+.course-description {
+  margin: 6px 0;
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.4;
+  max-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 .course-students {
   margin: 0;
   font-size: 0.9rem;
   color: #666;
+}
+
+/* Loading and Error States */
+.loading-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+.error-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #e74c3c;
+  text-align: center;
+}
+
+.no-schedule, .no-courses {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #888;
+  font-style: italic;
+  text-align: center;
 }
 
 /* Responsive Styles */
