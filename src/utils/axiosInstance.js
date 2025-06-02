@@ -2,8 +2,8 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3333', // Sesuaikan jika backendmu beda
-  withCredentials: true, // penting untuk cookie login
+  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3333",
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -30,13 +30,11 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error.response?.status === 401) {
-      // Token expired atau invalid
       localStorage.removeItem('token');
       localStorage.removeItem('isAuthenticated');
       localStorage.removeItem('userRole');
       localStorage.removeItem('username');
       
-      // Redirect ke login jika bukan di halaman login
       if (window.location.pathname !== '/login') {
         window.location.href = '/login';
       }
