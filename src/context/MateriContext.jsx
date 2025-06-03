@@ -1,7 +1,8 @@
 import React, { createContext, useState } from "react";
 
 // Membuat context
-export const MateriContext = createContext();
+const MateriContext = createContext();
+export {MateriContext};
 
 // Provider untuk membungkus App
 export const MateriProvider = ({ children }) => {

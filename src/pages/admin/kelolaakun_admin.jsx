@@ -13,7 +13,7 @@ const KelolaAkunAdmin = () => {
 
   // Fetch users from backend
   useEffect(() => {
-    fetchUsers();
+    fetchUsers().then(r => console.log("sukses", r));
   }, []);
 
   const fetchUsers = async () => {
