@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider, UserContext } from "./context/UserContext";
-import { MateriProvider } from "./context/MateriContext"; // Import MateriProvider
+import { MateriProvider } from "./context/MateriContext";
 import AppRoutes from "./routes/AppRoutes";
 
 const AppContent = () => {

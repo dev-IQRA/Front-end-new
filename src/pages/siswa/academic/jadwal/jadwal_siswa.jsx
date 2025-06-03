@@ -265,7 +265,7 @@ const Dashboard = () => {
 
       } catch (error) {
         console.error("Error fetching jadwal:", error);
-        setError("Gagal memuat jadwal. Pastikan Anda terdaftar di kelas.");
+        setError(`Error: ${error.response.data.message}.`);
       } finally {
         setLoading(false);
       }
